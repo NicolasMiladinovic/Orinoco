@@ -30,10 +30,10 @@ request.onload = function () {
             button.setAttribute("class", "addCartButton");
             button.textContent = "Ajouter au panier";
             button.addEventListener("click", function (e) {
-                console.log(e);
-                // let panier = e.value;
-                // console.log(panier);
-                // window.localStorage.setItem('panier', '"[{ Id = " + teddy._id + "name = "+ teddy.name "}]"');
+                // console.log(e);
+                let cart = e.target.value;
+                console.log(cart);
+                window.localStorage.setItem('cart', '"[{ Id = " + teddy._id + "name = "+ teddy.name "}]"');
 
             });
             
@@ -107,7 +107,6 @@ request2.open('GET', 'http://localhost:3000/api/cameras', true);
 request2.onload = function () {
     let data = JSON.parse(this.response);
     if (request2.status >= 200 && request2.status < 400) {
-        console.log("test if cameras");
         data.forEach((camera) => {
             const card = document.createElement('div');
             card.setAttribute('class', 'card');
