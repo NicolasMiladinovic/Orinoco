@@ -33,8 +33,7 @@ request.onload = function () {
                 // console.log(e);
                 let cart = e.target.value;
                 console.log(cart);
-                window.localStorage.setItem('cart', '"[{ Id = " + teddy._id + "name = "+ teddy.name "}]"');
-
+                window.localStorage.setItem('cart', "[{uehfufe},{fzfz}] ID : " + teddy._id + " NAME : " + teddy.name);
             });
             
 
@@ -82,7 +81,10 @@ request1.onload = function () {
             button.setAttribute("class", "addCartButton");
             button.textContent = "Ajouter au panier";
             button.addEventListener("click", function (e) {
-                console.log(e);
+                // console.log(e);
+                let cart = e.target.value;
+                console.log(cart);
+                window.localStorage.setItem('cart', " ID : " + furniture._id + " NAME : " + furniture.name);
             });
 
             container1.appendChild(card);
@@ -126,7 +128,10 @@ request2.onload = function () {
             button.setAttribute("class", "addCartButton");
             button.textContent = "Ajouter au panier";
             button.addEventListener("click", function (e) {
-                console.log(e);
+                // console.log(e);
+                let cart = e.target.value;
+                console.log(cart);
+                window.localStorage.setItem('cart', " ID : " + camera._id + " NAME : " + camera.name);
             });
 
             container2.appendChild(card);
