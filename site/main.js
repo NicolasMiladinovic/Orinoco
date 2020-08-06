@@ -31,9 +31,15 @@ request.onload = function () {
             button.textContent = "Ajouter au panier";
             button.addEventListener("click", function (e) {
                 // console.log(e);
-                let cart = e.target.value;
-                console.log(cart);
-                window.localStorage.setItem('cart', "[{uehfufe},{fzfz}] ID : " + teddy._id + " NAME : " + teddy.name);
+                // let cart = e.target.value;
+                // console.log(cart);
+                // localStorage.setItem('cart', "ID : " + teddy._id + " NAME : " + teddy.name);
+
+                let myCart = [];
+                let newElement = {id : e.target.value, name : teddy.name};
+                myCart.push(newElement);
+                let jsonWay = JSON.stringify(myCart);
+                localStorage.setItem('cart', jsonWay);
             });
             
 
