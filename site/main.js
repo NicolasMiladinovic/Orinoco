@@ -15,6 +15,8 @@ request.onload = function () {
             const card = document.createElement('div');
             card.setAttribute('class', 'card');
 
+            //balise a
+
             const h1 = document.createElement('h1');
             h1.textContent = teddy.name;
 
@@ -29,17 +31,17 @@ request.onload = function () {
             button.setAttribute("value", teddy._id);
             button.setAttribute("class", "addCartButton");
             button.textContent = "Ajouter au panier";
-            button.addEventListener("click", function (e) {
-                // console.log(e);
-                // let cart = e.target.value;
-                // console.log(cart);
-                // localStorage.setItem('cart', "ID : " + teddy._id + " NAME : " + teddy.name);
-
-                let myCart = [];
-                let newElement = {id : e.target.value, name : teddy.name};
-                myCart.push(newElement);
-                let jsonWay = JSON.stringify(myCart);
-                localStorage.setItem('cart', jsonWay);
+            button.addEventListener("click", function (e) {              
+                let actualCart = localStorage.getItem("cart");
+                let actualCartInJson=[];
+                if (actualCart!=null){  
+                     actualCartInJson = JSON.parse(actualCart);
+                    //  console.log(actualCartInJson[0].id);
+                }
+                let newElement = {id: teddy._id, name: teddy.name, price: teddy.price, image: teddy.imageUrl};
+                actualCartInJson.push(newElement);
+                localStorage.setItem("cart", JSON.stringify(actualCartInJson));
+                console.log(actualCartInJson);
             });
             
 
@@ -87,10 +89,16 @@ request1.onload = function () {
             button.setAttribute("class", "addCartButton");
             button.textContent = "Ajouter au panier";
             button.addEventListener("click", function (e) {
-                // console.log(e);
-                let cart = e.target.value;
-                console.log(cart);
-                window.localStorage.setItem('cart', " ID : " + furniture._id + " NAME : " + furniture.name);
+                let actualCart = localStorage.getItem("cart");
+                let actualCartInJson=[];
+                if (actualCart!=null){  
+                     actualCartInJson = JSON.parse(actualCart);
+                    //  console.log(actualCartInJson[0].id);
+                }
+                let newElement = {id: furniture._id, name: furniture.name, price: furniture.price, image: furniture.imageUrl};
+                actualCartInJson.push(newElement);
+                localStorage.setItem("cart", JSON.stringify(actualCartInJson));
+                console.log(actualCartInJson);
             });
 
             container1.appendChild(card);
@@ -134,10 +142,16 @@ request2.onload = function () {
             button.setAttribute("class", "addCartButton");
             button.textContent = "Ajouter au panier";
             button.addEventListener("click", function (e) {
-                // console.log(e);
-                let cart = e.target.value;
-                console.log(cart);
-                window.localStorage.setItem('cart', " ID : " + camera._id + " NAME : " + camera.name);
+                let actualCart = localStorage.getItem("cart");
+                let actualCartInJson=[];
+                if (actualCart!=null){  
+                     actualCartInJson = JSON.parse(actualCart);
+                    //  console.log(actualCartInJson[0].id);
+                }
+                let newElement = {id: camera._id, name: camera.name, price: camera.price, image: camera.imageUrl};
+                actualCartInJson.push(newElement);
+                localStorage.setItem("cart", JSON.stringify(actualCartInJson));
+                console.log(actualCartInJson);
             });
 
             container2.appendChild(card);

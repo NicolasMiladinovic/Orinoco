@@ -1,20 +1,19 @@
-console.log("Panier");
+// document.getElementById('produit').innerHTML = localStorage.getItem('cart');
 
-document.getElementById('produit').innerHTML = localStorage.getItem('cart');
+let cartContent = localStorage.getItem('cart');
+let itemList = JSON.parse(cartContent);
 
-// Exemple de localStorage
-//     let myCart = [];
-//     let newElement = {id: "54564654654", name: "Teddy 1"};
-//     myCart.push(newElement);
-//     let jsonWay = JSON.stringify(myCart);
-//     localStorage.setItem("cart", jsonWay);
+console.log(itemList);
 
+// console.log(itemList[0].name);
 
+let panier = document.getElementById('produit');
 
-//     // Ici par exemple, nous n'avons plus le panier
-//     let actualCart = localStorage.getItem("cart");
-//     let actualCartInJson = JSON.parse(actualCart);
-//     let newElement2 = {id: "zerzdsfez", name: "Teddy 2"};
-//     actualCartInJson.push(newElement2);
-//     localStorage.setItem("cart", JSON.stringify(actualCartInJson))
-//     console.log(actualCartInJson);
+itemList.forEach((item) => {
+    console.log(item.id + ' ' + item.name + ' ' + item.price)
+
+    let newDiv = document.createElement("div");
+    newDiv.textContent = item.name + ' ' + item.price;
+    panier.appendChild(newDiv);
+});
+

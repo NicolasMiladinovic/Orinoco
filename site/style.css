@@ -44,6 +44,12 @@ div {
 }
 
 i {
-  margin-left: 700%;
   font-size: 200%;
+  position: absolute;
+  top: 43px;
+  right: 37px;
+}
+
+#panier {
+  
 }
