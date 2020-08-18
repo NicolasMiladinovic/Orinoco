@@ -20,6 +20,17 @@ request.onload = function () {
             const h1 = document.createElement('h1');
             h1.textContent = teddy.name;
 
+            // const a = document.createElement('a');
+            // a.setAttribute("href", "html/produit.html");
+            // a.setAttribute("class", "lienProduit");
+
+            // function lienDansImg() {
+            //     const img = document.createElement('img')
+            //     const imgPlace = document.querySelector(".lienProduit");
+            //     img.setAttribute("src", teddy.imageUrl);
+            //     imgPlace.appendChild(img);
+            // }
+
             const img = document.createElement('img');
             img.setAttribute("src", teddy.imageUrl);
 
@@ -27,29 +38,30 @@ request.onload = function () {
             teddy.description = teddy.description.substring(0, 300);
             p.textContent = teddy.description;
 
-            const button = document.createElement('button');
-            button.setAttribute("value", teddy._id);
-            button.setAttribute("class", "addCartButton");
-            button.textContent = "Ajouter au panier";
-            button.addEventListener("click", function (e) {              
-                let actualCart = localStorage.getItem("cart");
-                let actualCartInJson=[];
-                if (actualCart!=null){  
-                     actualCartInJson = JSON.parse(actualCart);
-                    //  console.log(actualCartInJson[0].id);
-                }
-                let newElement = {id: teddy._id, name: teddy.name, price: teddy.price, image: teddy.imageUrl};
-                actualCartInJson.push(newElement);
-                localStorage.setItem("cart", JSON.stringify(actualCartInJson));
-                console.log(actualCartInJson);
-            });
+            // const button = document.createElement('button');
+            // button.setAttribute("value", teddy._id);
+            // button.setAttribute("class", "addCartButton");
+            // button.textContent = "Ajouter au panier";
+            // button.addEventListener("click", function (e) {              
+            //     let actualCart = localStorage.getItem("cart");
+            //     let actualCartInJson=[];
+            //     if (actualCart!=null){  
+            //          actualCartInJson = JSON.parse(actualCart);
+            //         //  console.log(actualCartInJson[0].id);
+            //     }
+            //     let newElement = {id: teddy._id, name: teddy.name, price: teddy.price, image: teddy.imageUrl};
+            //     actualCartInJson.push(newElement);
+            //     localStorage.setItem("cart", JSON.stringify(actualCartInJson));
+            //     console.log(actualCartInJson);
+            // });
             
 
             container.appendChild(card);
             card.appendChild(h1);
+            // card.appendChild(a);
             card.appendChild(img);
             card.appendChild(p);
-            card.appendChild(button);
+            // card.appendChild(button);
         });
     } else {
         const errorMessage = document.createElement('marquee');
