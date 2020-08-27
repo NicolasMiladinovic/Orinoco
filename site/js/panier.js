@@ -7,25 +7,31 @@ console.log(itemList);
 
 // console.log(itemList[0].name);
 
+let totalPrice = 0;
+
 let panier = document.getElementById('produit');
 
 itemList.forEach((item) => {
     console.log(item.id + ' ' + item.name + ' ' + item.price)
 
-    let newDivImg = document.createElement("div");
-    newDivImg.textContent = item.image;
-    newDivImg.setAttribute('id' , 'divImg');
+    const newImg = document.createElement("img");
+    newImg.setAttribute('src', item.image);
+    newImg.setAttribute('id', 'divImg');
 
     let newDivName = document.createElement('div');
     newDivName.textContent = item.name;
-    newDivName.setAttribute('id' , 'divName');
+    newDivName.setAttribute('id', 'divName');
 
     let newDivPrice = document.createElement('div');
     newDivPrice.textContent = item.price;
-    newDivPrice.setAttribute('id' , 'divPrice');
+    totalPrice += item.price;
+    newDivPrice.setAttribute('id', 'divPrice');
 
-    panier.appendChild(newDivImg);
+    panier.appendChild(newImg);
     panier.appendChild(newDivName);
     panier.appendChild(newDivPrice);
-    });
+});
 
+document.getElementById('totalPrice').innerHTML = totalPrice;
+
+console.log(totalPrice);

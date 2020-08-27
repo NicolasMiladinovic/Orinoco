@@ -3,12 +3,16 @@ header {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: #93f8ff;
+    background-color: #000000;
     padding-top: 10px;
     padding-bottom: 10px;
     font-family: Roboto, "Times New Roman";
     margin-bottom: 2rem;
     letter-spacing: -2px;
+}
+
+h1 {
+  color: white;
 }
 
 p {
@@ -51,15 +55,23 @@ i {
 }
 
 #produit {
+  padding-bottom: 3%;
   background-color: azure;
-  border: solid;
-}
-
-
-#panier {
-  
+  /* border: solid; */
+  display: flex;
+  flex-direction: column;
 }
 
 #divImg {
+border: solid;
+width: 25%;
+}
 
+#divName {
+  border: solid;
+}
+
+#divPrice {
+  border: solid;
+  margin-top: 1%;
 }
