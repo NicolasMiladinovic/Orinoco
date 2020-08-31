@@ -14,6 +14,9 @@ let panier = document.getElementById('produit');
 itemList.forEach((item) => {
     console.log(item.id + ' ' + item.name + ' ' + item.price)
 
+    let newProduct = document.createElement('div');
+    newProduct.setAttribute('class', 'newProduct');
+
     const newImg = document.createElement("img");
     newImg.setAttribute('src', item.image);
     newImg.setAttribute('id', 'divImg');
@@ -27,10 +30,13 @@ itemList.forEach((item) => {
     totalPrice += item.price;
     newDivPrice.setAttribute('id', 'divPrice');
 
-    panier.appendChild(newImg);
-    panier.appendChild(newDivName);
-    panier.appendChild(newDivPrice);
+    newProduct.appendChild(newImg);
+    newProduct.appendChild(newDivName);
+    newProduct.appendChild(newDivPrice);
+
+    panier.appendChild(newProduct);
 });
+
 
 document.getElementById('totalPrice').innerHTML = totalPrice;
 

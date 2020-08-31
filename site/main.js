@@ -3,7 +3,7 @@ const furnitures_div = document.getElementById('furnitures');
 const cameras_div = document.getElementById('cameras');
 
 const container = document.createElement('div');
-container.setAttribute('class', 'container');
+container.setAttribute('class', 'container row');
 teddys_div.appendChild(container);
 
 let request = new XMLHttpRequest();
@@ -12,13 +12,19 @@ request.onload = function () {
     let data = JSON.parse(this.response);
     if (request.status >= 200 && request.status < 400) {
         data.forEach((teddy) => {
+
+            const listOfTeddies = document.createElement('div');
+            listOfTeddies.setAttribute('class', 'listOfTeddiesClass row');
+
             const card = document.createElement('div');
-            card.setAttribute('class', 'card');
+            card.setAttribute('class', 'card col-3');
 
             //balise a
 
             const h1 = document.createElement('h1');
             h1.textContent = teddy.name;
+            h1.setAttribute('style', 'color: black');
+            h1.setAttribute('class', 'teddiesNames');
 
             // const a = document.createElement('a');
             // a.setAttribute("href", "html/produit.html");
@@ -38,22 +44,32 @@ request.onload = function () {
             teddy.description = teddy.description.substring(0, 300);
             p.textContent = teddy.description;
 
-            // const button = document.createElement('button');
-            // button.setAttribute("value", teddy._id);
-            // button.setAttribute("class", "addCartButton");
-            // button.textContent = "Ajouter au panier";
-            // button.addEventListener("click", function (e) {              
-            //     let actualCart = localStorage.getItem("cart");
-            //     let actualCartInJson=[];
-            //     if (actualCart!=null){  
-            //          actualCartInJson = JSON.parse(actualCart);
-            //         //  console.log(actualCartInJson[0].id);
-            //     }
-            //     let newElement = {id: teddy._id, name: teddy.name, price: teddy.price, image: teddy.imageUrl};
-            //     actualCartInJson.push(newElement);
-            //     localStorage.setItem("cart", JSON.stringify(actualCartInJson));
-            //     console.log(actualCartInJson);
-            // });
+            const button1 = document.createElement('a');
+            button1.setAttribute("id", teddy._id);
+            button1.setAttribute("class", "showProductbutton");
+            button1.setAttribute("href", 'html/produit.html?id='+teddy._id+'&type=teddies');
+            button1.textContent = "Voir le produit";
+            button1.addEventListener("click", function (e) {              
+               
+            });
+
+            const button = document.createElement('button');
+            button.setAttribute("id", teddy._id);
+            button.setAttribute("value", teddy._id);
+            button.setAttribute("class", "addCartButton");
+            button.textContent = "Ajouter au panier";
+            button.addEventListener("click", function (e) {              
+                let actualCart = localStorage.getItem("cart");
+                let actualCartInJson=[];
+                if (actualCart!=null){  
+                     actualCartInJson = JSON.parse(actualCart);
+                    //  console.log(actualCartInJson[0].id);
+                }
+                let newElement = {id: teddy._id, name: teddy.name, price: teddy.price, image: teddy.imageUrl};
+                actualCartInJson.push(newElement);
+                localStorage.setItem("cart", JSON.stringify(actualCartInJson));
+                console.log(actualCartInJson);
+            });
             
 
             container.appendChild(card);
@@ -61,7 +77,8 @@ request.onload = function () {
             // card.appendChild(a);
             card.appendChild(img);
             card.appendChild(p);
-            // card.appendChild(button);
+            card.appendChild(button1)
+            card.appendChild(button);
         });
     } else {
         const errorMessage = document.createElement('marquee');

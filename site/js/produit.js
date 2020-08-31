@@ -31,9 +31,9 @@
 //                 localStorage.setItem("cart", JSON.stringify(actualCartInJson));
 //                 console.log(actualCartInJson);
 //             });
-            
+
 //             container.appendChild(card);
-          
+
 //             card.appendChild(button);
 //         });
 //     } else {
@@ -44,3 +44,27 @@
 // };
 
 // request.send();
+
+document.addEventListener("DOMContentLoaded", function (event) {
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    let objectId = urlParams.get('id');
+    let type = urlParams.get('type');
+    console.log("je cherche " + objectId + 'de type ' + type);
+    // ajaxGet("http://localhost:3000/api/" + type + "/" + objectId, displayObject);
+    let request = new XMLHttpRequest();
+    request.open('GET', "http://localhost:3000/api/" + type + "/" + objectId, true);
+    request.onload = function () {
+        let data = JSON.parse(this.response);
+        if (request.status >= 200 && request.status < 400) {
+            console.log(data);
+        } else {
+            const errorMessage = document.createElement('marquee');
+            errorMessage.textContent = "It's not working !";
+            teddys_div.appendChild(errorMessage);
+        };
+    };
+    request.send();
+});
+
