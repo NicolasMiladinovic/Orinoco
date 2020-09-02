@@ -41,3 +41,14 @@ itemList.forEach((item) => {
 document.getElementById('totalPrice').innerHTML = totalPrice;
 
 console.log(totalPrice);
+
+contact = {
+    nom : 'toto',
+    firstname : 'titi',
+    mail : 'tototiti',
+    adresse : 'Champs Elysées',
+};
+
+product = [
+    'id1','id2'
+];

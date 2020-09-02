@@ -13,18 +13,15 @@ request.onload = function () {
     if (request.status >= 200 && request.status < 400) {
         data.forEach((teddy) => {
 
-            const listOfTeddies = document.createElement('div');
-            listOfTeddies.setAttribute('class', 'listOfTeddiesClass row');
-
             const card = document.createElement('div');
-            card.setAttribute('class', 'card col-3');
+            card.setAttribute('class', 'card col-xl-2 col-md-2');
 
             //balise a
 
             const h1 = document.createElement('h1');
             h1.textContent = teddy.name;
             h1.setAttribute('style', 'color: black');
-            h1.setAttribute('class', 'teddiesNames');
+            h1.setAttribute('class', 'productNames');
 
             // const a = document.createElement('a');
             // a.setAttribute("href", "html/produit.html");
@@ -91,7 +88,7 @@ request.onload = function () {
 // Appel de l'api furniture
 
 const container1 = document.createElement('div');
-container1.setAttribute('class', 'container');
+container1.setAttribute('class', 'container row');
 furnitures_div.appendChild(container1);
 
 let request1 = new XMLHttpRequest();
@@ -101,9 +98,11 @@ request1.onload = function () {
     if (request1.status >= 200 && request1.status < 400) {
         data.forEach((furniture) => {
             const card = document.createElement('div');
-            card.setAttribute('class', 'card');
+            card.setAttribute('class', 'card col-xl-2 col-md-2');
 
             const h1 = document.createElement('h1');
+            h1.setAttribute('style', 'color: black');
+            h1.setAttribute('class', 'productNames');
             h1.textContent = furniture.name;
 
             const img = document.createElement('img');
@@ -144,7 +143,7 @@ request1.onload = function () {
 };
 
 const container2 = document.createElement('div');
-container2.setAttribute('class', 'container');
+container2.setAttribute('class', 'container row');
 cameras_div.appendChild(container2);
 
 let request2 = new XMLHttpRequest();
@@ -154,9 +153,11 @@ request2.onload = function () {
     if (request2.status >= 200 && request2.status < 400) {
         data.forEach((camera) => {
             const card = document.createElement('div');
-            card.setAttribute('class', 'card');
+            card.setAttribute('class', 'card col-xl-2 col-md-2');
 
             const h1 = document.createElement('h1');
+            h1.setAttribute('style', 'color: black');
+            h1.setAttribute('class', 'productNames');
             h1.textContent = camera.name;
 
             const img = document.createElement('img');
