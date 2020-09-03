@@ -14,15 +14,11 @@ request.onload = function () {
         data.forEach((teddy) => {
 
             const card = document.createElement('div');
-            card.setAttribute('class', 'card col-xl-2 col-md-2');
+            card.setAttribute('class', 'card col');
 
             //balise a
 
-            const h1 = document.createElement('h1');
-            h1.textContent = teddy.name;
-            h1.setAttribute('style', 'color: black');
-            h1.setAttribute('class', 'productNames');
-
+            
             // const a = document.createElement('a');
             // a.setAttribute("href", "html/produit.html");
             // a.setAttribute("class", "lienProduit");
@@ -36,46 +32,61 @@ request.onload = function () {
 
             const img = document.createElement('img');
             img.setAttribute("src", teddy.imageUrl);
+            img.setAttribute("class", "card-img-top");
+
+            const cardBody = document.createElement('div');
+            cardBody.setAttribute("class","card-body");
+
+            const h1 = document.createElement('h1');
+            h1.textContent = teddy.name;
+            h1.setAttribute('style', 'color: black');
+            h1.setAttribute('class', 'productNames card-title');
 
             const p = document.createElement('p');
             teddy.description = teddy.description.substring(0, 300);
+            p.setAttribute("class","card-text");
             p.textContent = teddy.description;
 
             const button1 = document.createElement('a');
             button1.setAttribute("id", teddy._id);
-            button1.setAttribute("class", "showProductbutton");
+            button1.setAttribute("class", "showProductbutton btn btn-dark");
             button1.setAttribute("href", 'html/produit.html?id='+teddy._id+'&type=teddies');
             button1.textContent = "Voir le produit";
             button1.addEventListener("click", function (e) {              
                
             });
 
-            const button = document.createElement('button');
-            button.setAttribute("id", teddy._id);
-            button.setAttribute("value", teddy._id);
-            button.setAttribute("class", "addCartButton");
-            button.textContent = "Ajouter au panier";
-            button.addEventListener("click", function (e) {              
-                let actualCart = localStorage.getItem("cart");
-                let actualCartInJson=[];
-                if (actualCart!=null){  
-                     actualCartInJson = JSON.parse(actualCart);
-                    //  console.log(actualCartInJson[0].id);
-                }
-                let newElement = {id: teddy._id, name: teddy.name, price: teddy.price, image: teddy.imageUrl};
-                actualCartInJson.push(newElement);
-                localStorage.setItem("cart", JSON.stringify(actualCartInJson));
-                console.log(actualCartInJson);
-            });
+            // const button = document.createElement('button');
+            // button.setAttribute("id", teddy._id);
+            // button.setAttribute("value", teddy._id);
+            // button.setAttribute("class", "addCartButton");
+            // button.textContent = "Ajouter au panier";
+            // button.addEventListener("click", function (e) {              
+            //     let actualCart = localStorage.getItem("cart");
+            //     let actualCartInJson=[];
+            //     if (actualCart!=null){  
+            //          actualCartInJson = JSON.parse(actualCart);
+            //         //  console.log(actualCartInJson[0].id);
+            //     }
+            //     let newElement = {id: teddy._id, name: teddy.name, price: teddy.price, image: teddy.imageUrl};
+            //     actualCartInJson.push(newElement);
+            //     localStorage.setItem("cart", JSON.stringify(actualCartInJson));
+            //     console.log(actualCartInJson);
+            // });
             
 
             container.appendChild(card);
-            card.appendChild(h1);
-            // card.appendChild(a);
             card.appendChild(img);
-            card.appendChild(p);
-            card.appendChild(button1)
-            card.appendChild(button);
+            card.appendChild(cardBody);
+            // card.appendChild(h1);
+            // card.appendChild(a);
+            
+            cardBody.appendChild(h1);
+            cardBody.appendChild(p);
+            cardBody.appendChild(button1);
+            // card.appendChild(p);
+            // card.appendChild(button1)
+            // card.appendChild(button);
         });
     } else {
         const errorMessage = document.createElement('marquee');
@@ -98,7 +109,7 @@ request1.onload = function () {
     if (request1.status >= 200 && request1.status < 400) {
         data.forEach((furniture) => {
             const card = document.createElement('div');
-            card.setAttribute('class', 'card col-xl-2 col-md-2');
+            card.setAttribute('class', 'card col');
 
             const h1 = document.createElement('h1');
             h1.setAttribute('style', 'color: black');
@@ -153,7 +164,7 @@ request2.onload = function () {
     if (request2.status >= 200 && request2.status < 400) {
         data.forEach((camera) => {
             const card = document.createElement('div');
-            card.setAttribute('class', 'card col-xl-2 col-md-2');
+            card.setAttribute('class', 'card col');
 
             const h1 = document.createElement('h1');
             h1.setAttribute('style', 'color: black');
