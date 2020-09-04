@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     const urlParams = new URLSearchParams(queryString);
     let objectId = urlParams.get('id');
     let type = urlParams.get('type');
-    console.log("je cherche " + objectId + 'de type ' + type);
+    console.log("je cherche " + objectId + ' de type ' + type);
     // ajaxGet("http://localhost:3000/api/" + type + "/" + objectId, displayObject);
     let request = new XMLHttpRequest();
     request.open('GET', "http://localhost:3000/api/" + type + "/" + objectId, true);
@@ -68,3 +68,28 @@ document.addEventListener("DOMContentLoaded", function (event) {
     request.send();
 });
 
+
+// let objectCart = document.createElement('a');
+
+// objectCart.textContent = 'ajouter au panier';
+// document.getElementById('cart').appendChild(objectCart);
+
+// EN COURS
+
+const button = document.createElement('button');
+            button.setAttribute("id", objectId);
+            button.setAttribute("value", objectId);
+            button.setAttribute("class", "addCartButton");
+            button.textContent = "Ajouter au panier";
+            button.addEventListener("click", function (e) {              
+                let actualCart = localStorage.getItem("cart");
+                let actualCartInJson=[];
+                if (actualCart!=null){  
+                     actualCartInJson = JSON.parse(actualCart);
+                    //  console.log(actualCartInJson[0].id);
+                }
+                let newElement = {id: objectId, name: teddy.name, price: teddy.price, image: teddy.imageUrl};
+                actualCartInJson.push(newElement);
+                localStorage.setItem("cart", JSON.stringify(actualCartInJson));
+                console.log(actualCartInJson);
+            });

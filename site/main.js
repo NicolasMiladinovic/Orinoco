@@ -56,23 +56,23 @@ request.onload = function () {
                
             });
 
-            // const button = document.createElement('button');
-            // button.setAttribute("id", teddy._id);
-            // button.setAttribute("value", teddy._id);
-            // button.setAttribute("class", "addCartButton");
-            // button.textContent = "Ajouter au panier";
-            // button.addEventListener("click", function (e) {              
-            //     let actualCart = localStorage.getItem("cart");
-            //     let actualCartInJson=[];
-            //     if (actualCart!=null){  
-            //          actualCartInJson = JSON.parse(actualCart);
-            //         //  console.log(actualCartInJson[0].id);
-            //     }
-            //     let newElement = {id: teddy._id, name: teddy.name, price: teddy.price, image: teddy.imageUrl};
-            //     actualCartInJson.push(newElement);
-            //     localStorage.setItem("cart", JSON.stringify(actualCartInJson));
-            //     console.log(actualCartInJson);
-            // });
+            const button = document.createElement('button');
+            button.setAttribute("id", teddy._id);
+            button.setAttribute("value", teddy._id);
+            button.setAttribute("class", "addCartButton");
+            button.textContent = "Ajouter au panier";
+            button.addEventListener("click", function (e) {              
+                let actualCart = localStorage.getItem("cart");
+                let actualCartInJson=[];
+                if (actualCart!=null){  
+                     actualCartInJson = JSON.parse(actualCart);
+                    //  console.log(actualCartInJson[0].id);
+                }
+                let newElement = {id: teddy._id, name: teddy.name, price: teddy.price, image: teddy.imageUrl};
+                actualCartInJson.push(newElement);
+                localStorage.setItem("cart", JSON.stringify(actualCartInJson));
+                console.log(actualCartInJson);
+            });
             
 
             container.appendChild(card);
@@ -86,7 +86,7 @@ request.onload = function () {
             cardBody.appendChild(button1);
             // card.appendChild(p);
             // card.appendChild(button1)
-            // card.appendChild(button);
+            card.appendChild(button);
         });
     } else {
         const errorMessage = document.createElement('marquee');
@@ -111,40 +111,56 @@ request1.onload = function () {
             const card = document.createElement('div');
             card.setAttribute('class', 'card col');
 
-            const h1 = document.createElement('h1');
-            h1.setAttribute('style', 'color: black');
-            h1.setAttribute('class', 'productNames');
-            h1.textContent = furniture.name;
-
             const img = document.createElement('img');
             img.setAttribute("src", furniture.imageUrl);
+            img.setAttribute("class", "card-img-top");
+
+            const cardBody = document.createElement('div');
+            cardBody.setAttribute("class","card-body");
+
+            const h1 = document.createElement('h1');
+            h1.setAttribute('style', 'color: black');
+            h1.setAttribute('class', 'productNames card-title');
+            h1.textContent = furniture.name;
 
             const p = document.createElement('p');
             furniture.description = furniture.description.substring(0, 300);
+            p.setAttribute("class","card-text");
             p.textContent = furniture.description;
 
-            const button = document.createElement('button');
-            button.setAttribute("value", furniture._id);
-            button.setAttribute("class", "addCartButton");
-            button.textContent = "Ajouter au panier";
-            button.addEventListener("click", function (e) {
-                let actualCart = localStorage.getItem("cart");
-                let actualCartInJson=[];
-                if (actualCart!=null){  
-                     actualCartInJson = JSON.parse(actualCart);
-                    //  console.log(actualCartInJson[0].id);
-                }
-                let newElement = {id: furniture._id, name: furniture.name, price: furniture.price, image: furniture.imageUrl};
-                actualCartInJson.push(newElement);
-                localStorage.setItem("cart", JSON.stringify(actualCartInJson));
-                console.log(actualCartInJson);
+            const button1 = document.createElement('a');
+            button1.setAttribute("id", furniture._id);
+            button1.setAttribute("class", "showProductbutton btn btn-dark");
+            button1.setAttribute("href", 'html/produit.html?id='+furniture._id+'&type=furnitures');
+            button1.textContent = "Voir le produit";
+            button1.addEventListener("click", function (e) {              
+               
             });
 
+            // const button = document.createElement('button');
+            // button.setAttribute("value", furniture._id);
+            // button.setAttribute("class", "addCartButton");
+            // button.textContent = "Ajouter au panier";
+            // button.addEventListener("click", function (e) {
+            //     let actualCart = localStorage.getItem("cart");
+            //     let actualCartInJson=[];
+            //     if (actualCart!=null){  
+            //          actualCartInJson = JSON.parse(actualCart);
+            //         //  console.log(actualCartInJson[0].id);
+            //     }
+            //     let newElement = {id: furniture._id, name: furniture.name, price: furniture.price, image: furniture.imageUrl};
+            //     actualCartInJson.push(newElement);
+            //     localStorage.setItem("cart", JSON.stringify(actualCartInJson));
+            //     console.log(actualCartInJson);
+            // });
+
             container1.appendChild(card);
-            card.appendChild(h1);
             card.appendChild(img);
-            card.appendChild(p);
-            card.appendChild(button);
+            card.appendChild(cardBody);
+
+            cardBody.appendChild(h1);
+            cardBody.appendChild(p);
+            cardBody.appendChild(button1);
         });
     } else {
         const errorMessage = document.createElement('marquee');
@@ -166,40 +182,62 @@ request2.onload = function () {
             const card = document.createElement('div');
             card.setAttribute('class', 'card col');
 
-            const h1 = document.createElement('h1');
-            h1.setAttribute('style', 'color: black');
-            h1.setAttribute('class', 'productNames');
-            h1.textContent = camera.name;
-
             const img = document.createElement('img');
             img.setAttribute("src", camera.imageUrl);
+            img.setAttribute("class", "card-img-top");
+
+            const cardBody = document.createElement('div');
+            cardBody.setAttribute("class","card-body");
+
+            const h1 = document.createElement('h1');
+            h1.setAttribute('style', 'color: black');
+            h1.setAttribute('class', 'productNames card-title');
+            h1.textContent = camera.name;
 
             const p = document.createElement('p');
             camera.description = camera.description.substring(0, 300);
+            p.setAttribute("class","card-text");
             p.textContent = camera.description;
 
-            const button = document.createElement('button');
-            button.setAttribute("value", camera._id);
-            button.setAttribute("class", "addCartButton");
-            button.textContent = "Ajouter au panier";
-            button.addEventListener("click", function (e) {
-                let actualCart = localStorage.getItem("cart");
-                let actualCartInJson=[];
-                if (actualCart!=null){  
-                     actualCartInJson = JSON.parse(actualCart);
-                    //  console.log(actualCartInJson[0].id);
-                }
-                let newElement = {id: camera._id, name: camera.name, price: camera.price, image: camera.imageUrl};
-                actualCartInJson.push(newElement);
-                localStorage.setItem("cart", JSON.stringify(actualCartInJson));
-                console.log(actualCartInJson);
+            const button1 = document.createElement('a');
+            button1.setAttribute("id", camera._id);
+            button1.setAttribute("class", "showProductbutton btn btn-dark");
+            button1.setAttribute("href", 'html/produit.html?id='+camera._id+'&type=cameras');
+            button1.textContent = "Voir le produit";
+            button1.addEventListener("click", function (e) {              
+               
             });
 
+            // const button = document.createElement('button');
+            // button.setAttribute("value", camera._id);
+            // button.setAttribute("class", "addCartButton");
+            // button.textContent = "Ajouter au panier";
+            // button.addEventListener("click", function (e) {
+            //     let actualCart = localStorage.getItem("cart");
+            //     let actualCartInJson=[];
+            //     if (actualCart!=null){  
+            //          actualCartInJson = JSON.parse(actualCart);
+            //         //  console.log(actualCartInJson[0].id);
+            //     }
+            //     let newElement = {id: camera._id, name: camera.name, price: camera.price, image: camera.imageUrl};
+            //     actualCartInJson.push(newElement);
+            //     localStorage.setItem("cart", JSON.stringify(actualCartInJson));
+            //     console.log(actualCartInJson);
+            // });
+
+            // container2.appendChild(card);
+            // card.appendChild(h1);
+            // card.appendChild(img);
+            // card.appendChild(p);
+            // card.appendChild(button);
+
             container2.appendChild(card);
-            card.appendChild(h1);
             card.appendChild(img);
-            card.appendChild(p);
-            card.appendChild(button);
+            card.appendChild(cardBody);
+
+            cardBody.appendChild(h1);
+            cardBody.appendChild(p);
+            cardBody.appendChild(button1);
         });
     } else {
         const errorMessage = document.createElement('marquee');
