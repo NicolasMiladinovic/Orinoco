@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         };
         console.log(data.name);
         displayProduct(data);
+        displayAddCart(data);
     };
     request.send();
 });
@@ -36,6 +37,7 @@ function displayProduct(data) {
     const card = document.getElementById('cart');
 
     const subCard = document.createElement('div');
+
     // const img = document.createElement('img');
     // img.setAttribute("src", data.imageUrl);
     // img.setAttribute("class", "");
@@ -53,21 +55,44 @@ function displayProduct(data) {
 
 // EN COURS
 
-const button = document.createElement('button');
-button.setAttribute("id", objectId);
-button.setAttribute("value", objectId);
-button.setAttribute("class", "addCartButton");
-button.textContent = "Ajouter au panier";
-button.addEventListener("click", function (e) {
-    let actualCart = localStorage.getItem("cart");
-    let actualCartInJson = [];
-    if (actualCart != null) {
-        actualCartInJson = JSON.parse(actualCart);
-        //  console.log(actualCartInJson[0].id);
-    }
-    let newElement = { id: objectId, name: teddy.name, price: teddy.price, image: teddy.imageUrl };
-    actualCartInJson.push(newElement);
-    localStorage.setItem("cart", JSON.stringify(actualCartInJson));
-    console.log(actualCartInJson);
-});
+// const button = document.createElement('button');
+// button.setAttribute("id", objectId);
+// button.setAttribute("value", objectId);
+// button.setAttribute("class", "addCartButton");
+// button.textContent = "Ajouter au panier";
+// button.addEventListener("click", function (e) {
+//     let actualCart = localStorage.getItem("cart");
+//     let actualCartInJson = [];
+//     if (actualCart != null) {
+//         actualCartInJson = JSON.parse(actualCart);
+//         //  console.log(actualCartInJson[0].id);
+//     }
+//     let newElement = { id: objectId, name: teddy.name, price: teddy.price, image: teddy.imageUrl };
+//     actualCartInJson.push(newElement);
+//     localStorage.setItem("cart", JSON.stringify(actualCartInJson));
+//     console.log(actualCartInJson);
+// });
 
+
+function displayAddCart(data) {
+    const card = document.getElementById('cart');
+    const button = document.createElement('button');
+    button.setAttribute("id", objectId);
+    button.setAttribute("value", objectId);
+    button.setAttribute("class", "addCartButton");
+    button.textContent = "Ajouter au panier";
+    button.addEventListener("click", function (e) {
+        let actualCart = localStorage.getItem("cart");
+        let actualCartInJson = [];
+        if (actualCart != null) {
+            actualCartInJson = JSON.parse(actualCart);
+            //  console.log(actualCartInJson[0].id);
+        }
+        let newElement = { id: data._id, name: data.name, price: data.price, image: data.imageUrl };
+        actualCartInJson.push(newElement);
+        localStorage.setItem("cart", JSON.stringify(actualCartInJson));
+        console.log(actualCartInJson);
+    });
+
+    card.appendChild(button);
+}

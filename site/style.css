@@ -1,38 +1,38 @@
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #000000;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-family: Roboto, "Times New Roman";
-    margin-bottom: 2rem;
-    letter-spacing: -2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #000000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: Roboto, "Times New Roman";
+  margin-bottom: 2rem;
+  letter-spacing: -2px;
 }
 
 @media screen and (min-width: 1100px) {
   #teddys {
     margin-right: auto;
     margin-left: auto;
-     width: 70%;
-   }   
+    width: 70%;
+  }
 }
 
 @media screen and (min-width: 1100px) {
   #furnitures {
     margin-right: auto;
     margin-left: auto;
-     width: 70%;
-   }   
+    width: 70%;
+  }
 }
 
 @media screen and (min-width: 1100px) {
   #cameras {
     margin-right: auto;
     margin-left: auto;
-     width: 70%;
-   }   
+    width: 70%;
+  }
 }
 
 h1 {
@@ -47,16 +47,15 @@ p {
   font-size: 100%;
 }
 
+img {
+  box-shadow: 0px 0px 8px 1px #a2a5a4;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 100%; */
+}
 
-  img {
-    box-shadow: 0px 0px 8px 1px #a2a5a4;
-    border-radius: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-  }
-
-  /* @media screen and (max-width: 708px) {
+/* @media screen and (max-width: 708px) {
     img {
       width: 400px;
     }
@@ -66,17 +65,23 @@ p {
       width: 270px;
     }
   } */
+
+.card-img-top {
+  width: 140px;
+  height: 95px;
+}
+
 h2 {
-    margin-top: 3%;
-    padding-bottom: 20px;
-    border-bottom: 3px solid gainsboro;
-    font-size: 237%;
-    margin-left: auto;
-    margin-right: auto;
+  margin-top: 3%;
+  padding-bottom: 20px;
+  border-bottom: 3px solid gainsboro;
+  font-size: 237%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 i {
@@ -95,8 +100,8 @@ i {
 }
 
 #divImg {
-border: solid;
-width: 25%;
+  border: solid;
+  width: 25%;
 }
 
 #divName {
@@ -110,8 +115,9 @@ width: 25%;
 
 .card {
   border: none;
-  margin-top: auto;
+  margin-top: 2%;
   margin-bottom: auto;
+  height: 550px;
 }
 
 button {
@@ -122,13 +128,14 @@ button {
 .row {
   margin: 0%;
 }
-  @media (min-width: 576px) {
+
+@media (min-width: 576px) {
   .container {
-      max-width: 100%;
+    max-width: 100%;
   }
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 800px) {
   .row {
     display: flex;
     flex-direction: column;

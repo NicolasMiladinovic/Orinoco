@@ -18,7 +18,7 @@ request.onload = function () {
 
             //balise a
 
-            
+
             // const a = document.createElement('a');
             // a.setAttribute("href", "html/produit.html");
             // a.setAttribute("class", "lienProduit");
@@ -35,7 +35,7 @@ request.onload = function () {
             img.setAttribute("class", "card-img-top");
 
             const cardBody = document.createElement('div');
-            cardBody.setAttribute("class","card-body");
+            cardBody.setAttribute("class", "card-body");
 
             const h1 = document.createElement('h1');
             h1.textContent = teddy.name;
@@ -44,49 +44,49 @@ request.onload = function () {
 
             const p = document.createElement('p');
             teddy.description = teddy.description.substring(0, 300);
-            p.setAttribute("class","card-text");
+            p.setAttribute("class", "card-text");
             p.textContent = teddy.description;
 
             const button1 = document.createElement('a');
             button1.setAttribute("id", teddy._id);
             button1.setAttribute("class", "showProductbutton btn btn-dark");
-            button1.setAttribute("href", 'html/produit.html?id='+teddy._id+'&type=teddies');
+            button1.setAttribute("href", 'html/produit.html?id=' + teddy._id + '&type=teddies');
             button1.textContent = "Voir le produit";
-            button1.addEventListener("click", function (e) {              
-               
+            button1.addEventListener("click", function (e) {
+
             });
 
-            const button = document.createElement('button');
-            button.setAttribute("id", teddy._id);
-            button.setAttribute("value", teddy._id);
-            button.setAttribute("class", "addCartButton");
-            button.textContent = "Ajouter au panier";
-            button.addEventListener("click", function (e) {              
-                let actualCart = localStorage.getItem("cart");
-                let actualCartInJson=[];
-                if (actualCart!=null){  
-                     actualCartInJson = JSON.parse(actualCart);
-                    //  console.log(actualCartInJson[0].id);
-                }
-                let newElement = {id: teddy._id, name: teddy.name, price: teddy.price, image: teddy.imageUrl};
-                actualCartInJson.push(newElement);
-                localStorage.setItem("cart", JSON.stringify(actualCartInJson));
-                console.log(actualCartInJson);
-            });
-            
+            // const button = document.createElement('button');
+            // button.setAttribute("id", teddy._id);
+            // button.setAttribute("value", teddy._id);
+            // button.setAttribute("class", "addCartButton");
+            // button.textContent = "Ajouter au panier";
+            // button.addEventListener("click", function (e) {
+            //     let actualCart = localStorage.getItem("cart");
+            //     let actualCartInJson = [];
+            //     if (actualCart != null) {
+            //         actualCartInJson = JSON.parse(actualCart);
+            //         //  console.log(actualCartInJson[0].id);
+            //     }
+            //     let newElement = { id: teddy._id, name: teddy.name, price: teddy.price, image: teddy.imageUrl };
+            //     actualCartInJson.push(newElement);
+            //     localStorage.setItem("cart", JSON.stringify(actualCartInJson));
+            //     console.log(actualCartInJson);
+            // });
+
 
             container.appendChild(card);
             card.appendChild(img);
             card.appendChild(cardBody);
             // card.appendChild(h1);
             // card.appendChild(a);
-            
+
             cardBody.appendChild(h1);
             cardBody.appendChild(p);
-            cardBody.appendChild(button1);
+            // cardBody.appendChild(button1);
             // card.appendChild(p);
-            // card.appendChild(button1)
-            card.appendChild(button);
+            card.appendChild(button1)
+            // card.appendChild(button);
         });
     } else {
         const errorMessage = document.createElement('marquee');
@@ -116,7 +116,7 @@ request1.onload = function () {
             img.setAttribute("class", "card-img-top");
 
             const cardBody = document.createElement('div');
-            cardBody.setAttribute("class","card-body");
+            cardBody.setAttribute("class", "card-body");
 
             const h1 = document.createElement('h1');
             h1.setAttribute('style', 'color: black');
@@ -125,16 +125,16 @@ request1.onload = function () {
 
             const p = document.createElement('p');
             furniture.description = furniture.description.substring(0, 300);
-            p.setAttribute("class","card-text");
+            p.setAttribute("class", "card-text");
             p.textContent = furniture.description;
 
             const button1 = document.createElement('a');
             button1.setAttribute("id", furniture._id);
             button1.setAttribute("class", "showProductbutton btn btn-dark");
-            button1.setAttribute("href", 'html/produit.html?id='+furniture._id+'&type=furniture');
+            button1.setAttribute("href", 'html/produit.html?id=' + furniture._id + '&type=furniture');
             button1.textContent = "Voir le produit";
-            button1.addEventListener("click", function (e) {              
-               
+            button1.addEventListener("click", function (e) {
+
             });
 
             // const button = document.createElement('button');
@@ -157,10 +157,11 @@ request1.onload = function () {
             container1.appendChild(card);
             card.appendChild(img);
             card.appendChild(cardBody);
+            card.appendChild(button1)
 
             cardBody.appendChild(h1);
             cardBody.appendChild(p);
-            cardBody.appendChild(button1);
+            // cardBody.appendChild(button1);
         });
     } else {
         const errorMessage = document.createElement('marquee');
@@ -187,7 +188,7 @@ request2.onload = function () {
             img.setAttribute("class", "card-img-top");
 
             const cardBody = document.createElement('div');
-            cardBody.setAttribute("class","card-body");
+            cardBody.setAttribute("class", "card-body");
 
             const h1 = document.createElement('h1');
             h1.setAttribute('style', 'color: black');
@@ -196,16 +197,16 @@ request2.onload = function () {
 
             const p = document.createElement('p');
             camera.description = camera.description.substring(0, 300);
-            p.setAttribute("class","card-text");
+            p.setAttribute("class", "card-text");
             p.textContent = camera.description;
 
             const button1 = document.createElement('a');
             button1.setAttribute("id", camera._id);
             button1.setAttribute("class", "showProductbutton btn btn-dark");
-            button1.setAttribute("href", 'html/produit.html?id='+camera._id+'&type=cameras');
+            button1.setAttribute("href", 'html/produit.html?id=' + camera._id + '&type=cameras');
             button1.textContent = "Voir le produit";
-            button1.addEventListener("click", function (e) {              
-               
+            button1.addEventListener("click", function (e) {
+
             });
 
             // const button = document.createElement('button');
@@ -234,10 +235,11 @@ request2.onload = function () {
             container2.appendChild(card);
             card.appendChild(img);
             card.appendChild(cardBody);
+            card.appendChild(button1)
 
             cardBody.appendChild(h1);
             cardBody.appendChild(p);
-            cardBody.appendChild(button1);
+            // cardBody.appendChild(button1);
         });
     } else {
         const errorMessage = document.createElement('marquee');
