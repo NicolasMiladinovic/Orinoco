@@ -54,3 +54,46 @@ contact = {
 product = [
     'id1', 'id2'
 ];
+
+// const panier = [
+//     {
+//       id: 11789,
+//       name: 'Norbert'
+//     },
+//     {
+//       id: 6789,
+//       name: "Nico"
+//     },
+//     {
+//       id: 1235641789,
+//       name: "Toni"
+//     }
+//   ]
+  
+  
+//   clickedId = 123456789;
+//   indexCount = 0;
+  
+//   console.log(panier)
+//   panier.forEach(function(oneItem){
+//       if (oneItem.id === clickedId){
+//         panier.splice(indexCount, 1)
+//       }
+//         indexCount += 1;
+//   })
+//   JSON.encode(panier);
+//   localStorage.setItem(cart, panier);
+//   var container = document.getElementById("Container");
+//   container.innerHTML = "";
+//   DisplayAllCart()
+  
+  
+  
+//   function DisplayAllCart(){
+//     var cart = localStorage.getItem("cart")
+//     var container = document.getElementById("Container")
+//     .......
+    
+    
+//     container.appendChild(AllContent)
+//   }

@@ -131,7 +131,7 @@ request1.onload = function () {
             const button1 = document.createElement('a');
             button1.setAttribute("id", furniture._id);
             button1.setAttribute("class", "showProductbutton btn btn-dark");
-            button1.setAttribute("href", 'html/produit.html?id='+furniture._id+'&type=furnitures');
+            button1.setAttribute("href", 'html/produit.html?id='+furniture._id+'&type=furniture');
             button1.textContent = "Voir le produit";
             button1.addEventListener("click", function (e) {              
                
