@@ -34,6 +34,17 @@ function displayProduct(data) {
     newImg.setAttribute('src', data.imageUrl);
     newImg.setAttribute('id', 'divImg');
 
+    console.log(data.colors);
+    // let objectColors = data.colors;
+    // const newColorSelector = document.createElement("select");
+    // console.log(objectColors);
+    // {
+    //     let tabColor = objectColors.pop();
+    //     let opt = new Option(tabColor, tabColor);
+    //     newColorSelector.options[newColorSelector.options.length] = opt;
+    // }
+    // newColorSelector.setAttribute('id', 'idSelector');
+
     const card = document.getElementById('cart');
 
     const subCard = document.createElement('div');
@@ -48,6 +59,7 @@ function displayProduct(data) {
     // p.textContent = data.description;
 
     subCard.appendChild(newImg);
+    // subCard.appendChild(newColorSelector);
     card.appendChild(subCard);
     // card.appendChild(p);
 
