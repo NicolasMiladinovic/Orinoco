@@ -45,6 +45,32 @@ function displayProduct(data) {
     // }
     // newColorSelector.setAttribute('id', 'idSelector');
 
+    let objectSlt = document.createElement('select')
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    let type = urlParams.get('type');
+    if (type === 'teddies') {
+        data.colors.forEach(function (color) {
+            let objectOpt = document.createElement('option');
+            objectOpt.textContent = color;
+            objectSlt.appendChild(objectOpt);
+        });
+    }else if (type === 'cameras'){
+        data.lenses.forEach(function (lentille) {
+            let objectOpt =document.createElement('option');
+            objectOpt.textContent = lentille;
+            objectSlt.appendChild(objectOpt);
+        });
+    }else if (type === 'furniture'){
+        data.varnish.forEach(function (vernis) {
+            let objectOpt = document.createElement('option');
+            objectOpt.textContent = vernis;
+            objectSlt.appendChild(objectOpt);
+        });
+    };
+    
+
+
     const card = document.getElementById('cart');
 
     const subCard = document.createElement('div');
@@ -59,6 +85,7 @@ function displayProduct(data) {
     // p.textContent = data.description;
 
     subCard.appendChild(newImg);
+    subCard.appendChild(objectSlt);
     // subCard.appendChild(newColorSelector);
     card.appendChild(subCard);
     // card.appendChild(p);
