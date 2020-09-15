@@ -8,7 +8,7 @@ function displayAllCart() {
 
     let removeButton;
 
-    console.log(itemList);
+    // console.log(itemList);
 
     // console.log(itemList[0].name);
 
@@ -17,7 +17,7 @@ function displayAllCart() {
     let panier = document.getElementById('produit');
 
     itemList.forEach((item) => {
-        console.log(item.id + ' ' + item.name + ' ' + item.price)
+        // console.log(item.id + ' ' + item.name + ' ' + item.price)
 
         let newProduct = document.createElement('div');
         newProduct.setAttribute('class', 'newProduct');
@@ -33,18 +33,33 @@ function displayAllCart() {
 
 
         removeButton.addEventListener('click', function () {
-            let indexCount = 0;
             let mycart = JSON.parse(localStorage.getItem('cart'));
-            let clickedId = item.id;
-            console.log(clickedId);
-            console.log(panier);
-            mycart.forEach(function (data) {
-                if (data.id === clickedId) {
-                    mycart.splice(indexCount, 1);
-                    continue;
-                }
-                indexCount += 1;
-            })
+
+            let index = mycart.map(function (e) {
+                return e.id;
+            }
+            ).indexOf(item.id);
+
+            // On supprime l'élément
+            mycart.splice(index, 1);
+
+
+            //////////////////////////////////////////////////////////
+            // Similaire aux lignes précédentes mais moins optimisé //
+            //////////////////////////////////////////////////////////
+
+            // // On crée un tableau avec les id des items du panier
+            // let idArray = [];
+            // mycart.forEach(function (currentItem) {
+            //     idArray.push(currentItem.id)
+            // })
+            // // console.log(idArray)
+
+            // // On cherche l'index de l'objet à supprimer du panier
+            // let index = idArray.indexOf(clickedId);
+            // // console.log(index);
+
+      
 
             localStorage.setItem('cart', JSON.stringify(mycart));
             panier.innerHTML = "";
@@ -74,10 +89,10 @@ function displayAllCart() {
 
         panier.appendChild(newProduct);
 
-        
+
     });
 
-    console.log(totalPrice);
+    // console.log(totalPrice);
 
     document.getElementById('totalPrice').innerHTML = totalPrice;
 
