@@ -5,12 +5,7 @@ function displayAllCart() {
     let cartContent = localStorage.getItem('cart');
     let itemList = JSON.parse(cartContent);
 
-
     let removeButton;
-
-    // console.log(itemList);
-
-    // console.log(itemList[0].name);
 
     let totalPrice = 0;
 
@@ -92,10 +87,7 @@ function displayAllCart() {
 
     });
 
-    // console.log(totalPrice);
-
     document.getElementById('totalPrice').innerHTML = totalPrice;
-
 }
 
 
@@ -103,17 +95,48 @@ function displayAllCart() {
 // Forme requête POST //
 ///////////////////////
 
-// var xhr = new XMLHttpRequest();
-// xhr.open("POST", '/server', true);
+// var request = new XMLHttpRequest();
+// request.open("POST", '/server', true);
 
 // //Envoie les informations du header adaptées avec la requête
-// xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+// request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-// xhr.onreadystatechange = function() { //Appelle une fonction au changement d'état.
+// request.onreadystatechange = function() { //Appelle une fonction au changement d'état.
 //     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
 // // Requête finie, traitement ici.
 //     }
 // }
-// xhr.send("foo=bar&lorem=ipsum");
-// // xhr.send(new Int8Array()); 
-// // xhr.send(document);
+// request.send("foo=bar&lorem=ipsum");
+// // request.send(new Int8Array()); 
+// // request.send(document);
+
+
+
+// var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+// var theUrl = "/json-handler";
+// xmlhttp.open("POST", theUrl);
+// xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+// xmlhttp.send(JSON.stringify({ "email": "hello@user.com", "response": { "name": "Tester" } }));
+
+let bodyJson = {
+    contact : {
+        firstName : "",
+        lastName : "",
+        address : "",
+        city : "",
+        email : ""
+    },
+    product : []
+};
+
+
+let btnCommand = document.getElementById('btnCommand');
+
+btnCommand.addEventListener('click', function () {
+    let name = document.getElementById('name').value;
+    // let inputByIndex = inputs[2];
+    // console.log(inputByIndex);
+    console.log(name);
+
+    bodyJson.contact.firstName = document.getElementById('firstname').value;
+});
