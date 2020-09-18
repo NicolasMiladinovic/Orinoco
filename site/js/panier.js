@@ -1,18 +1,11 @@
-displayAllCart();
-
 function displayAllCart() {
-
     let cartContent = localStorage.getItem('cart');
     let itemList = JSON.parse(cartContent);
-
     let removeButton;
-
     let totalPrice = 0;
-
     let panier = document.getElementById('produit');
 
     itemList.forEach((item) => {
-        // console.log(item.id + ' ' + item.name + ' ' + item.price)
 
         let newProduct = document.createElement('div');
         newProduct.setAttribute('class', 'newProduct');
@@ -26,7 +19,6 @@ function displayAllCart() {
         optionRemoveButton.setAttribute('aria-hidden', 'true');
         optionRemoveButton.textContent = 'x';
 
-
         removeButton.addEventListener('click', function () {
             let mycart = JSON.parse(localStorage.getItem('cart'));
 
@@ -37,24 +29,6 @@ function displayAllCart() {
 
             // On supprime l'élément
             mycart.splice(index, 1);
-
-
-            //////////////////////////////////////////////////////////
-            // Similaire aux lignes précédentes mais moins optimisé //
-            //////////////////////////////////////////////////////////
-
-            // // On crée un tableau avec les id des items du panier
-            // let idArray = [];
-            // mycart.forEach(function (currentItem) {
-            //     idArray.push(currentItem.id)
-            // })
-            // // console.log(idArray)
-
-            // // On cherche l'index de l'objet à supprimer du panier
-            // let index = idArray.indexOf(clickedId);
-            // // console.log(index);
-
-      
 
             localStorage.setItem('cart', JSON.stringify(mycart));
             panier.innerHTML = "";
@@ -74,7 +48,6 @@ function displayAllCart() {
         totalPrice += item.price;
         newDivPrice.setAttribute('id', 'divPrice');
 
-
         removeButton.appendChild(optionRemoveButton);
 
         newProduct.appendChild(removeButton);
@@ -83,12 +56,75 @@ function displayAllCart() {
         newProduct.appendChild(newDivPrice);
 
         panier.appendChild(newProduct);
-
-
     });
-
     document.getElementById('totalPrice').innerHTML = totalPrice;
 }
+
+function sendCommand() {
+    let bodyJson = {
+        contact: {
+            firstName: "",
+            lastName: "",
+            address: "",
+            city: "",
+            email: ""
+        },
+        product: []
+    };
+
+    bodyJson.contact.firstName = document.getElementById('firstname').value;
+    bodyJson.contact.lastName = document.getElementById('name').value;
+    bodyJson.contact.address = document.getElementById('address').value;
+    bodyJson.contact.city = document.getElementById('city').value;
+    bodyJson.contact.email = document.getElementById('email').value;
+
+    //Creation of POST XMLHTTPRequest 
+    const xhr = new XMLHttpRequest();
+
+    xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            const response = JSON.parse(xhr.responseText);
+            console.log(response);
+            console.log(response.orderId);
+        }
+    };
+
+    xhr.open('POST', 'http://localhost:3000/api/teddies/order');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(bodyJson));
+}
+
+
+
+
+// let btnCommand = document.getElementById('btnCommand');
+
+// let bodyJson = {
+//     contact : {
+//         firstName : "",
+//         lastName : "",
+//         address : "",
+//         city : "",
+//         email : ""
+//     },
+//     product : []
+// };
+
+// btnCommand.addEventListener('click', function () {
+//     bodyJson.contact.firstName = document.getElementById('firstname').value;
+//     bodyJson.contact.lastName = document.getElementById('name').value;
+//     bodyJson.contact.address = document.getElementById('address').value;
+//     bodyJson.contact.city = document.getElementById('city').value;
+//     bodyJson.contact.email = document.getElementById('email').value;
+
+//     let xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+//     let theUrl = "http://localhost:3000/api/teddies/order";
+//     xmlhttp.open("POST", theUrl);
+//     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+//     xmlhttp.send(JSON.stringify());
+// });
+
+
 
 
 /////////////////////////
@@ -112,31 +148,19 @@ function displayAllCart() {
 
 
 
-// var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-// var theUrl = "/json-handler";
+// let xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+// let theUrl = "http://localhost:3000/api/teddies/order";
 // xmlhttp.open("POST", theUrl);
 // xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-// xmlhttp.send(JSON.stringify({ "email": "hello@user.com", "response": { "name": "Tester" } }));
-
-let bodyJson = {
-    contact : {
-        firstName : "",
-        lastName : "",
-        address : "",
-        city : "",
-        email : ""
-    },
-    product : []
-};
+// xmlhttp.send(JSON.stringify({
+//     contact: {
+//         firstName: "",
+//         lastName: "",
+//         address: "",
+//         city: "",
+//         email: ""
+//     },
+//     product: []
+// }));
 
 
-let btnCommand = document.getElementById('btnCommand');
-
-btnCommand.addEventListener('click', function () {
-    let name = document.getElementById('name').value;
-    // let inputByIndex = inputs[2];
-    // console.log(inputByIndex);
-    console.log(name);
-
-    bodyJson.contact.firstName = document.getElementById('firstname').value;
-});

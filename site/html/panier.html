@@ -11,7 +11,7 @@
     <title>Panier</title>
 </head>
 
-<body>
+<body onload="displayAllCart()">
     <header>
         <span class="logo"></span>
         <h1><a href="../index.html">Orinoco</a></h1>
@@ -50,7 +50,7 @@
                 <input type="text" class="form-control" id="city" value="">
             </div>
         </div>
-        <button id="btnCommand" type="submit" class="btn btn-primary">Commander</button>
+        <button id="btnCommand" type="submit" class="btn btn-primary" onclick="sendCommand()">Commander</button>
     </form>
 
     <script src="../js/panier.js"></script>
