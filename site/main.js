@@ -16,20 +16,6 @@ request.onload = function () {
             const card = document.createElement('div');
             card.setAttribute('class', 'card col');
 
-            //balise a
-
-
-            // const a = document.createElement('a');
-            // a.setAttribute("href", "html/produit.html");
-            // a.setAttribute("class", "lienProduit");
-
-            // function lienDansImg() {
-            //     const img = document.createElement('img')
-            //     const imgPlace = document.querySelector(".lienProduit");
-            //     img.setAttribute("src", teddy.imageUrl);
-            //     imgPlace.appendChild(img);
-            // }
-
             const img = document.createElement('img');
             img.setAttribute("src", teddy.imageUrl);
             img.setAttribute("class", "card-img-top");
@@ -47,6 +33,9 @@ request.onload = function () {
             p.setAttribute("class", "card-text");
             p.textContent = teddy.description;
 
+            const pPrice = document.createElement('p');
+            pPrice.textContent = teddy.price + " €";
+
             const button1 = document.createElement('a');
             button1.setAttribute("id", teddy._id);
             button1.setAttribute("class", "showProductbutton btn btn-dark");
@@ -56,37 +45,14 @@ request.onload = function () {
 
             });
 
-            // const button = document.createElement('button');
-            // button.setAttribute("id", teddy._id);
-            // button.setAttribute("value", teddy._id);
-            // button.setAttribute("class", "addCartButton");
-            // button.textContent = "Ajouter au panier";
-            // button.addEventListener("click", function (e) {
-            //     let actualCart = localStorage.getItem("cart");
-            //     let actualCartInJson = [];
-            //     if (actualCart != null) {
-            //         actualCartInJson = JSON.parse(actualCart);
-            //         //  console.log(actualCartInJson[0].id);
-            //     }
-            //     let newElement = { id: teddy._id, name: teddy.name, price: teddy.price, image: teddy.imageUrl };
-            //     actualCartInJson.push(newElement);
-            //     localStorage.setItem("cart", JSON.stringify(actualCartInJson));
-            //     console.log(actualCartInJson);
-            // });
-
-
             container.appendChild(card);
             card.appendChild(img);
             card.appendChild(cardBody);
-            // card.appendChild(h1);
-            // card.appendChild(a);
 
             cardBody.appendChild(h1);
             cardBody.appendChild(p);
-            // cardBody.appendChild(button1);
-            // card.appendChild(p);
+            cardBody.appendChild(pPrice);
             card.appendChild(button1)
-            // card.appendChild(button);
         });
     } else {
         const errorMessage = document.createElement('marquee');
@@ -128,6 +94,9 @@ request1.onload = function () {
             p.setAttribute("class", "card-text");
             p.textContent = furniture.description;
 
+            const pPrice = document.createElement('p');
+            pPrice.textContent = furniture.price + " €";
+
             const button1 = document.createElement('a');
             button1.setAttribute("id", furniture._id);
             button1.setAttribute("class", "showProductbutton btn btn-dark");
@@ -137,23 +106,6 @@ request1.onload = function () {
 
             });
 
-            // const button = document.createElement('button');
-            // button.setAttribute("value", furniture._id);
-            // button.setAttribute("class", "addCartButton");
-            // button.textContent = "Ajouter au panier";
-            // button.addEventListener("click", function (e) {
-            //     let actualCart = localStorage.getItem("cart");
-            //     let actualCartInJson=[];
-            //     if (actualCart!=null){  
-            //          actualCartInJson = JSON.parse(actualCart);
-            //         //  console.log(actualCartInJson[0].id);
-            //     }
-            //     let newElement = {id: furniture._id, name: furniture.name, price: furniture.price, image: furniture.imageUrl};
-            //     actualCartInJson.push(newElement);
-            //     localStorage.setItem("cart", JSON.stringify(actualCartInJson));
-            //     console.log(actualCartInJson);
-            // });
-
             container1.appendChild(card);
             card.appendChild(img);
             card.appendChild(cardBody);
@@ -161,6 +113,7 @@ request1.onload = function () {
 
             cardBody.appendChild(h1);
             cardBody.appendChild(p);
+            cardBody.appendChild(pPrice);
             // cardBody.appendChild(button1);
         });
     } else {
@@ -200,6 +153,9 @@ request2.onload = function () {
             p.setAttribute("class", "card-text");
             p.textContent = camera.description;
 
+            const pPrice = document.createElement('p');
+            pPrice.textContent = camera.price + " €";
+
             const button1 = document.createElement('a');
             button1.setAttribute("id", camera._id);
             button1.setAttribute("class", "showProductbutton btn btn-dark");
@@ -209,28 +165,6 @@ request2.onload = function () {
 
             });
 
-            // const button = document.createElement('button');
-            // button.setAttribute("value", camera._id);
-            // button.setAttribute("class", "addCartButton");
-            // button.textContent = "Ajouter au panier";
-            // button.addEventListener("click", function (e) {
-            //     let actualCart = localStorage.getItem("cart");
-            //     let actualCartInJson=[];
-            //     if (actualCart!=null){  
-            //          actualCartInJson = JSON.parse(actualCart);
-            //         //  console.log(actualCartInJson[0].id);
-            //     }
-            //     let newElement = {id: camera._id, name: camera.name, price: camera.price, image: camera.imageUrl};
-            //     actualCartInJson.push(newElement);
-            //     localStorage.setItem("cart", JSON.stringify(actualCartInJson));
-            //     console.log(actualCartInJson);
-            // });
-
-            // container2.appendChild(card);
-            // card.appendChild(h1);
-            // card.appendChild(img);
-            // card.appendChild(p);
-            // card.appendChild(button);
 
             container2.appendChild(card);
             card.appendChild(img);
@@ -239,7 +173,7 @@ request2.onload = function () {
 
             cardBody.appendChild(h1);
             cardBody.appendChild(p);
-            // cardBody.appendChild(button1);
+            cardBody.appendChild(pPrice);
         });
     } else {
         const errorMessage = document.createElement('marquee');

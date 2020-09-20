@@ -61,6 +61,7 @@ function displayAllCart() {
 }
 
 function sendCommand() {
+
     let bodyJson = {
         contact: {
             firstName: "",
@@ -69,7 +70,7 @@ function sendCommand() {
             city: "",
             email: ""
         },
-        product: []
+        products: []
     };
 
     bodyJson.contact.firstName = document.getElementById('firstname').value;
@@ -81,7 +82,7 @@ function sendCommand() {
     //Creation of POST XMLHTTPRequest 
     const xhr = new XMLHttpRequest();
 
-    xhr.onload = function () {
+    xhr.onload = () => {
         if (xhr.status >= 200 && xhr.status < 300) {
             const response = JSON.parse(xhr.responseText);
             console.log(response);
@@ -92,75 +93,8 @@ function sendCommand() {
     xhr.open('POST', 'http://localhost:3000/api/teddies/order');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(bodyJson));
-}
+};
 
 
-
-
-// let btnCommand = document.getElementById('btnCommand');
-
-// let bodyJson = {
-//     contact : {
-//         firstName : "",
-//         lastName : "",
-//         address : "",
-//         city : "",
-//         email : ""
-//     },
-//     product : []
-// };
-
-// btnCommand.addEventListener('click', function () {
-//     bodyJson.contact.firstName = document.getElementById('firstname').value;
-//     bodyJson.contact.lastName = document.getElementById('name').value;
-//     bodyJson.contact.address = document.getElementById('address').value;
-//     bodyJson.contact.city = document.getElementById('city').value;
-//     bodyJson.contact.email = document.getElementById('email').value;
-
-//     let xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-//     let theUrl = "http://localhost:3000/api/teddies/order";
-//     xmlhttp.open("POST", theUrl);
-//     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-//     xmlhttp.send(JSON.stringify());
-// });
-
-
-
-
-/////////////////////////
-// Forme requête POST //
-///////////////////////
-
-// var request = new XMLHttpRequest();
-// request.open("POST", '/server', true);
-
-// //Envoie les informations du header adaptées avec la requête
-// request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-// request.onreadystatechange = function() { //Appelle une fonction au changement d'état.
-//     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-// // Requête finie, traitement ici.
-//     }
-// }
-// request.send("foo=bar&lorem=ipsum");
-// // request.send(new Int8Array()); 
-// // request.send(document);
-
-
-
-// let xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-// let theUrl = "http://localhost:3000/api/teddies/order";
-// xmlhttp.open("POST", theUrl);
-// xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-// xmlhttp.send(JSON.stringify({
-//     contact: {
-//         firstName: "",
-//         lastName: "",
-//         address: "",
-//         city: "",
-//         email: ""
-//     },
-//     product: []
-// }));
 
 
