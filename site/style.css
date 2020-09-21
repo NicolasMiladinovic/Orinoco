@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Champagne & Limousines";
+  src: url("fonts/Champagne&Limousines_Bold.ttf") format("ttf"),
+ }
+
 header {
   display: flex;
   justify-content: center;
@@ -6,11 +11,14 @@ header {
   background-color: #000000;
   padding-top: 10px;
   padding-bottom: 10px;
-  font-family: Roboto, "Times New Roman";
+  /* font-family: Roboto, "Times New Roman"; */
   margin-bottom: 2rem;
   letter-spacing: -2px;
 }
 
+h1 {
+  font-family: 'Champagne & Limousines';
+}
 
 @media screen and (min-width: 1100px) {
   #teddys {
@@ -49,7 +57,7 @@ img {
   border-radius: 5px;
   margin-left: auto;
   margin-right: auto;
-  /* width: 100%; */
+  width: 100%;
 }
 
 /* @media screen and (max-width: 708px) {
@@ -94,17 +102,14 @@ i {
   right: 37px;
 }
 
-#produit {
-  padding-bottom: 3%;
-  background-color: azure;
-  /* border: solid; */
-  display: flex;
-  flex-direction: column;
+#product {
+  margin-right: auto;
+  margin-left: auto;
 }
 
-#divImg {
-  border: solid;
-  width: 25%;
+#imgProduct {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 #divName {
@@ -114,6 +119,10 @@ i {
 #divPrice {
   border: solid;
   margin-top: 1%;
+}
+
+#price {
+  font-weight: bold;
 }
 
 .card {
@@ -126,6 +135,10 @@ i {
 button {
   margin-right: auto;
   margin-left: auto;
+}
+
+.addCartButton {
+  margin-top: 3%;
 }
 
 .row {

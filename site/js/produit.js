@@ -1,6 +1,5 @@
 let objectId = "";
 let data = {};
-// let objectOpt = document.createElement('option');
 
 document.addEventListener("DOMContentLoaded", function (event) {
 
@@ -30,15 +29,38 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 function displayProduct(data) {
 
-    const title = document.createElement('h1');
-    title.textContent = data.name;
-    title.setAttribute('id','titleProduct');
-    title.setAttribute('style', 'color: black');
+    const card = document.getElementById('product');
+
+    const row = document.createElement('div');
+    row.setAttribute('class', 'row no-gutters');
+
+    const divColImg = document.createElement('div');
+    divColImg.setAttribute('class', 'col-md-4');
 
     const newImg = document.createElement("img");
     console.log(data.imageUrl);
     newImg.setAttribute('src', data.imageUrl);
-    newImg.setAttribute('id', 'divImg');
+    newImg.setAttribute('id', 'imgProduct')
+
+    const divColText = document.createElement('div');
+    divColText.setAttribute('class', 'col-md-8');
+
+    const divTextContent = document.createElement('div');
+    divTextContent.setAttribute('class', 'card-body');
+
+    const title = document.createElement('h5');
+    title.textContent = data.name;
+    title.setAttribute('class', 'card-title');
+
+    const p = document.createElement('p');
+    data.description = data.description.substring(0, 300);
+    p.setAttribute("class", "card-text");
+    p.textContent = data.description;
+
+    const newPPrice = document.createElement('p');
+    newPPrice.textContent = data.price/100 + " €";
+    newPPrice.setAttribute('class', 'card-text');
+    newPPrice.setAttribute('id', 'price');
 
 
     let objectSlt = document.createElement('select')
@@ -65,36 +87,21 @@ function displayProduct(data) {
         });
     };
 
-
-
-    const card = document.getElementById('cart');
-
-    const subCard = document.createElement('div');
-
-    const p = document.createElement('p');
-    data.description = data.description.substring(0, 300);
-    p.setAttribute("class", "card-text");
-    p.textContent = data.description;
-
-    const newDivPrice = document.createElement('div');
-    newDivPrice.textContent = data.price;
-    newDivPrice.setAttribute('id', 'divPrice');
-
-    subCard.appendChild(title);
-    subCard.appendChild(newImg);
-    subCard.appendChild(objectSlt);
-    subCard.appendChild(p);
-    subCard.appendChild(newDivPrice);
-
-    card.appendChild(subCard);
-
-
+    card.appendChild(row);
+    row.appendChild(divColImg);
+    divColImg.appendChild(newImg);
+    row.appendChild(divColText);
+    divColText.appendChild(divTextContent);
+    divTextContent.appendChild(title);
+    divTextContent.appendChild(p);
+    divTextContent.appendChild(objectSlt);
+    divTextContent.appendChild(newPPrice);
 };
 
 
 
 function displayAddCart(data) {
-    const card = document.getElementById('cart');
+    const card = document.getElementById('product');
     const button = document.createElement('button');
     button.setAttribute("id", objectId);
     button.setAttribute("value", objectId);

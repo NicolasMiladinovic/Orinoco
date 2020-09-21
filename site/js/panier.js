@@ -1,3 +1,14 @@
+let bodyJson = {
+    contact: {
+        firstName: "",
+        lastName: "",
+        address: "",
+        city: "",
+        email: ""
+    },
+    products: []
+};
+
 function displayAllCart() {
     let cartContent = localStorage.getItem('cart');
     let itemList = JSON.parse(cartContent);
@@ -6,6 +17,8 @@ function displayAllCart() {
     let panier = document.getElementById('produit');
 
     itemList.forEach((item) => {
+
+        bodyJson.products.push(item.id);
 
         let newProduct = document.createElement('div');
         newProduct.setAttribute('class', 'newProduct');
@@ -62,22 +75,15 @@ function displayAllCart() {
 
 function sendCommand() {
 
-    let bodyJson = {
-        contact: {
-            firstName: "",
-            lastName: "",
-            address: "",
-            city: "",
-            email: ""
-        },
-        products: []
-    };
+    
 
     bodyJson.contact.firstName = document.getElementById('firstname').value;
     bodyJson.contact.lastName = document.getElementById('name').value;
     bodyJson.contact.address = document.getElementById('address').value;
     bodyJson.contact.city = document.getElementById('city').value;
     bodyJson.contact.email = document.getElementById('email').value;
+
+    
 
     //Creation of POST XMLHTTPRequest 
     const xhr = new XMLHttpRequest();

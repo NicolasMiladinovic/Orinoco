@@ -34,7 +34,7 @@ request.onload = function () {
             p.textContent = teddy.description;
 
             const pPrice = document.createElement('p');
-            pPrice.textContent = teddy.price + " €";
+            pPrice.textContent = teddy.price/100 + " €";
 
             const button1 = document.createElement('a');
             button1.setAttribute("id", teddy._id);
@@ -95,7 +95,7 @@ request1.onload = function () {
             p.textContent = furniture.description;
 
             const pPrice = document.createElement('p');
-            pPrice.textContent = furniture.price + " €";
+            pPrice.textContent = furniture.price/100 + " €";
 
             const button1 = document.createElement('a');
             button1.setAttribute("id", furniture._id);
