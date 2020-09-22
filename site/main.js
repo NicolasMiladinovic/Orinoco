@@ -35,6 +35,7 @@ request.onload = function () {
 
             const pPrice = document.createElement('p');
             pPrice.textContent = teddy.price/100 + " €";
+            pPrice.setAttribute('id', 'price');
 
             const button1 = document.createElement('a');
             button1.setAttribute("id", teddy._id);
@@ -96,6 +97,7 @@ request1.onload = function () {
 
             const pPrice = document.createElement('p');
             pPrice.textContent = furniture.price/100 + " €";
+            pPrice.setAttribute('id', 'price');
 
             const button1 = document.createElement('a');
             button1.setAttribute("id", furniture._id);
@@ -154,7 +156,8 @@ request2.onload = function () {
             p.textContent = camera.description;
 
             const pPrice = document.createElement('p');
-            pPrice.textContent = camera.price + " €";
+            pPrice.textContent = camera.price/100 + " €";
+            pPrice.setAttribute('id', 'price');
 
             const button1 = document.createElement('a');
             button1.setAttribute("id", camera._id);
