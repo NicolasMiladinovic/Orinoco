@@ -1,5 +1,8 @@
 let objectId = "";
 let data = {};
+const divTextContent = document.createElement('div');
+const button = document.createElement('button');
+button.setAttribute('class', 'btn btn-dark');
 
 document.addEventListener("DOMContentLoaded", function (event) {
 
@@ -43,9 +46,9 @@ function displayProduct(data) {
     newImg.setAttribute('id', 'imgProduct')
 
     const divColText = document.createElement('div');
-    divColText.setAttribute('class', 'col-md-8');
+    divColText.setAttribute('class', 'col-md-8 contentTextProduct');
 
-    const divTextContent = document.createElement('div');
+   
     divTextContent.setAttribute('class', 'card-body');
 
     const title = document.createElement('h5');
@@ -64,6 +67,11 @@ function displayProduct(data) {
 
 
     let objectSlt = document.createElement('select')
+    objectSlt.setAttribute('class','card-select');
+    let objectHidOpt = document.createElement('option')
+    objectHidOpt.setAttribute('hidden', '')
+    objectHidOpt.textContent = "Couleurs"
+    objectSlt.appendChild(objectHidOpt)
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     let type = urlParams.get('type');
@@ -101,24 +109,20 @@ function displayProduct(data) {
 
 
 function displayAddCart(data) {
-    const card = document.getElementById('product');
-    const button = document.createElement('button');
     button.setAttribute("id", objectId);
     button.setAttribute("value", objectId);
-    button.setAttribute("class", "addCartButton");
+    button.setAttribute("class", "addCartButton btn btn-success");
     button.textContent = "Ajouter au panier";
     button.addEventListener("click", function (e) {
         let actualCart = localStorage.getItem("cart");
         let actualCartInJson = [];
         if (actualCart != null) {
             actualCartInJson = JSON.parse(actualCart);
-            //  console.log(actualCartInJson[0].id);
         }
         let newElement = { id: data._id, name: data.name, price: data.price, image: data.imageUrl };
         actualCartInJson.push(newElement);
         localStorage.setItem("cart", JSON.stringify(actualCartInJson));
         console.log(actualCartInJson);
     });
-
-    card.appendChild(button);
+    divTextContent.appendChild(button)
 }
