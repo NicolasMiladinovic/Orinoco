@@ -21,7 +21,7 @@ function displayAllCart() {
         bodyJson.products.push(item.id);
 
         let newProduct = document.createElement('div');
-        newProduct.setAttribute('class', 'newProduct');
+        newProduct.setAttribute('class', 'newProduct d-flex bd-highlight');
 
         removeButton = document.createElement('button');
         removeButton.setAttribute('type', 'button');
@@ -48,6 +48,9 @@ function displayAllCart() {
             displayAllCart();
         });
 
+        let newDivImg = document.createElement('div');
+        newDivImg.setAttribute('class','p-2 flex-fill bd-highlight');
+
         const newImg = document.createElement("img");
         newImg.setAttribute('src', item.image);
         newImg.setAttribute('id', 'divImg');
@@ -55,20 +58,29 @@ function displayAllCart() {
         let newDivName = document.createElement('div');
         newDivName.textContent = item.name;
         newDivName.setAttribute('id', 'divName');
+        newDivName.setAttribute('class','p-2 flex-fill bd-highlight');
 
         let newDivPrice = document.createElement('div');
         newDivPrice.textContent = item.price;
         totalPrice += item.price;
         newDivPrice.setAttribute('id', 'divPrice');
+        newDivPrice.setAttribute('class','p-2 flex-fill bd-highlight');
 
         removeButton.appendChild(optionRemoveButton);
 
-        newProduct.appendChild(removeButton);
-        newProduct.appendChild(newImg);
+        newProduct.appendChild(newDivImg);
+        newDivImg.appendChild(newImg);
+        newDivImg.appendChild(removeButton);
         newProduct.appendChild(newDivName);
         newProduct.appendChild(newDivPrice);
-
         panier.appendChild(newProduct);
+
+        // newProduct.appendChild(removeButton);
+        // newProduct.appendChild(newImg);
+        // newProduct.appendChild(newDivName);
+        // newProduct.appendChild(newDivPrice);
+
+        // panier.appendChild(newProduct);
     });
     document.getElementById('totalPrice').innerHTML = totalPrice;
 }
