@@ -28,9 +28,9 @@ function displayAllCart() {
         removeButton.setAttribute('class', 'close');
         removeButton.setAttribute('aria-label', 'Close');
 
-        let optionRemoveButton = document.createElement('span');
-        optionRemoveButton.setAttribute('aria-hidden', 'true');
-        optionRemoveButton.textContent = 'x';
+        let optionRemoveButton = document.createElement('i');
+        optionRemoveButton.setAttribute('class','fas fa-trash fa-stack-2x')
+        console.log(optionRemoveButton);
 
         removeButton.addEventListener('click', function () {
             let mycart = JSON.parse(localStorage.getItem('cart'));
@@ -48,8 +48,12 @@ function displayAllCart() {
             displayAllCart();
         });
 
+        let newDivClear = document.createElement('div');
+        newDivClear.setAttribute('class','p-2 flex-fill bd-highlight');
+        newDivClear.setAttribute('id','newDivClear');
+
         let newDivImg = document.createElement('div');
-        newDivImg.setAttribute('class','p-2 flex-fill bd-highlight');
+        newDivImg.setAttribute('class','p-2 flex-fill bd-highlight newDivImg');
 
         const newImg = document.createElement("img");
         newImg.setAttribute('src', item.image);
@@ -68,9 +72,10 @@ function displayAllCart() {
 
         removeButton.appendChild(optionRemoveButton);
 
+        newProduct.appendChild(newDivClear);
+        newDivClear.appendChild(removeButton);
         newProduct.appendChild(newDivImg);
         newDivImg.appendChild(newImg);
-        newDivImg.appendChild(removeButton);
         newProduct.appendChild(newDivName);
         newProduct.appendChild(newDivPrice);
         panier.appendChild(newProduct);

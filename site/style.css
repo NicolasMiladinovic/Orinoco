@@ -130,7 +130,7 @@ a:hover {
   color: white;
 }
 
-i {
+.fa-shopping-cart {
   font-size: 200%;
   position: absolute;
   top: 20px;
@@ -150,6 +150,28 @@ i {
   #imgProduct {
     margin-top: 0;
   }
+}
+
+#newDivClear {
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-stack-2x {
+  position: relative;
+}
+
+.newDivImg {
+  max-width: 400px;
+}
+
+#divImg {
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
 }
 
 #divName {
