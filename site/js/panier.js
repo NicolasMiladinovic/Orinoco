@@ -65,8 +65,8 @@ function displayAllCart() {
         newDivName.setAttribute('class','p-2 flex-fill bd-highlight');
 
         let newDivPrice = document.createElement('div');
-        newDivPrice.textContent = item.price;
-        totalPrice += item.price;
+        newDivPrice.textContent = item.price/100 + " €";
+        totalPrice += item.price/100;
         newDivPrice.setAttribute('id', 'divPrice');
         newDivPrice.setAttribute('class','p-2 flex-fill bd-highlight');
 

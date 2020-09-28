@@ -19,10 +19,24 @@
             color: white;"></i></a>
     </header>
 
+    <div class="d-flex bd-highlight" id="panierBarre">
+        <div class="p-2 flex-fill bd-highlight" id="supprimerBarre">Supprimer</div>
+        <div class="p-2 flex-fill bd-highlight" id="nomBarre">Produit</div>
+        <div class="p-2 flex-fill bd-highlight" id="videBarre"></div>
+        <div class="p-2 flex-fill bd-highlight" id="prixBarre">Prix</div>
+    </div>
+
     <div id="produit"></div>
-    <div id="total">TOTAL : <span id="totalPrice"></span></div>
+    <div class="d-flex bd-highlight">
+        <div class="p-2 flex-fill bd-highlight" id="total">TOTAL : <span id="totalPrice"></span> €</div>
+    </div>
 
     <form id="form">
+        <div class="row">
+            <div class="col-12" id="formTitle">
+                Passez votre commande !
+            </div>
+        </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="">Prénom</label>
@@ -49,11 +63,13 @@
         </div>
     </form>
 
-    <button type="submit" class="btn btn-primary" onclick="sendCommand()">Commander</button>
+    <div class="d-flex bd-highlight">
+        <div class="d-flex bd-highlight" id="buttonCommand">
+            <button type="submit" class="btn btn-primary" onclick="sendCommand()">Commander</button>
+        </div>
+    </div>
 
     <script src="../js/panier.js"></script>
 </body>
 
 </html>
-
-

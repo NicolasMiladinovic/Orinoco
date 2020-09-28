@@ -20,7 +20,7 @@ header {
   letter-spacing: -3px;
 }
 
-h1, h2, h5 {
+h1, h2, h5, #panierBarre, #formTitle {
   font-family: 'champagne__limousinesbold';
 }
 
@@ -153,7 +153,7 @@ a:hover {
 }
 
 #newDivClear {
-  max-width: 200px;
+  max-width: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -170,23 +170,66 @@ a:hover {
 
 #divImg {
   max-width: 400px;
+  min-width: 380px;
   display: flex;
   justify-content: center;
 }
 
-#divName {
-  border: solid;
+#divName, #divPrice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 2em;
+}
+
+#divName, #videBarre {
+  max-width: 390px;
+  min-width: 350px;
 }
 
 #divPrice {
-  border: solid;
-  margin-top: 1%;
+  align-items: center;
+  width: 360px;
 }
 
 #price {
   font-weight: bold;
   font-size: 1.8rem;
 }
+
+#panierBarre {
+  font-size: 1.5rem;
+  border-bottom: solid;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+#nomBarre, #supprimerBarre, #prixBarre {
+  display: flex;
+}
+
+#nomBarre {
+  max-width: 400px;
+  min-width: 380px;
+  justify-content: flex-start;
+}
+
+#prixBarre {
+  width: 360px;
+  align-items: center;
+  justify-content: center;
+}
+
+#supprimerBarre {
+  max-width: 150px;
+  justify-content: flex-start;
+}
+
+#total {
+  font-size: 2rem;
+}
+
+
 
 .card {
   border: none;
@@ -235,11 +278,31 @@ button {
   }
 }
 
-.contentTextProduct {
+/* .contentTextProduct {
   
-}
+} */
 
 .no-gutters>.col, .no-gutters>[class*=col-] {
   padding-right: 2%;
   padding-left: 2%;
+}
+
+#form {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  font-size: 1.5rem;
+}
+
+#buttonCommand {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
+}
+
+#formTitle {
+  font-size: 2rem;
+  border-bottom: solid;
+  margin-bottom: 2%;
 }
