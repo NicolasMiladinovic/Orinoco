@@ -30,7 +30,6 @@ function displayAllCart() {
 
         let optionRemoveButton = document.createElement('i');
         optionRemoveButton.setAttribute('class','fas fa-trash fa-stack-2x')
-        console.log(optionRemoveButton);
 
         removeButton.addEventListener('click', function () {
             let mycart = JSON.parse(localStorage.getItem('cart'));
@@ -87,20 +86,17 @@ function displayAllCart() {
 
         // panier.appendChild(newProduct);
     });
+    localStorage.setItem("Total", totalPrice);
     document.getElementById('totalPrice').innerHTML = totalPrice;
 }
 
 function sendCommand() {
-
-    
 
     bodyJson.contact.firstName = document.getElementById('firstname').value;
     bodyJson.contact.lastName = document.getElementById('name').value;
     bodyJson.contact.address = document.getElementById('address').value;
     bodyJson.contact.city = document.getElementById('city').value;
     bodyJson.contact.email = document.getElementById('email').value;
-
-    
 
     //Creation of POST XMLHTTPRequest 
     const xhr = new XMLHttpRequest();
@@ -109,15 +105,11 @@ function sendCommand() {
         if (xhr.status >= 200 && xhr.status < 300) {
             const response = JSON.parse(xhr.responseText);
             console.log(response);
-            console.log(response.orderId);
         }
     };
 
     xhr.open('POST', 'http://localhost:3000/api/teddies/order');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(bodyJson));
+    localStorage.setItem('orderId', )
 };
-
-
-
-

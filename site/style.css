@@ -306,3 +306,8 @@ button {
   border-bottom: solid;
   margin-bottom: 2%;
 }
+
+#titleConfirmation {
+  display: flex;
+  justify-content: center;
+}

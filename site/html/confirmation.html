@@ -1,13 +1,34 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+    <link href="../fontawesome-free-5.14.0-web/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmation</title>
 </head>
+
 <body>
+    <header>
+        <span class="logo"></span>
+        <h1><a href="../index.html">Orinoco</a></h1>
+        <a href="panier.html"><i class="fas fa-shopping-cart" style="
+            color: white;"></i></a>
+    </header>
     une page de confirmation de commande, remerciant l'utilisateur pour sa
-commande, et indiquant le prix total et l'identifiant de commande envoyé
-par le serveur
+    commande, et indiquant le prix total et l'identifiant de commande envoyé
+    par le serveur
+
+    <h1 id="titleConfirmation">Orinoco vous remercie pour votre commande</h1>
+
+    <p>
+        Montant de la commande : <span id="totalPrice"> €</span>
+    </p>
+
+    <script src="../js/panier.js"></script>
 </body>
+
 </html>
