@@ -70,7 +70,7 @@ function displayProduct(data) {
     objectSlt.setAttribute('class','card-select');
     let objectHidOpt = document.createElement('option')
     objectHidOpt.setAttribute('hidden', '')
-    objectHidOpt.textContent = "Couleurs"
+    objectHidOpt.textContent = "Option"
     objectSlt.appendChild(objectHidOpt)
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);

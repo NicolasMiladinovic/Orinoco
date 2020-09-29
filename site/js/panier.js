@@ -100,16 +100,20 @@ function sendCommand() {
 
     //Creation of POST XMLHTTPRequest 
     const xhr = new XMLHttpRequest();
+    
 
     xhr.onload = () => {
         if (xhr.status >= 200 && xhr.status < 300) {
             const response = JSON.parse(xhr.responseText);
             console.log(response);
+            localStorage.setItem("orderId", response.orderId)
+            console.log(response.orderId);
         }
     };
 
     xhr.open('POST', 'http://localhost:3000/api/teddies/order');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(bodyJson));
-    localStorage.setItem('orderId', )
+    
+    
 };
