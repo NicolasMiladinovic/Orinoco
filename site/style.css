@@ -152,6 +152,12 @@ a:hover {
   }
 }
 
+.newProduct, #panierBarre {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #newDivClear {
   max-width: 150px;
   display: flex;
@@ -200,8 +206,7 @@ a:hover {
 #panierBarre {
   font-size: 1.5rem;
   border-bottom: solid;
-  margin-left: 4px;
-  margin-right: 4px;
+  margin-bottom: 15px;
 }
 
 #nomBarre, #supprimerBarre, #prixBarre {
