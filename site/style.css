@@ -232,8 +232,18 @@ a:hover {
 
 #total {
   font-size: 2rem;
+  font-weight: bold;
 }
 
+.divTotal {
+  width: 80%;
+  display: flex;
+  margin: 0 auto 0 auto;
+}
+
+#txtTotal {
+  color: #868686;
+}
 
 
 .card {

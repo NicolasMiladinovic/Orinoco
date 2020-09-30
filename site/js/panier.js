@@ -79,12 +79,6 @@ function displayAllCart() {
         newProduct.appendChild(newDivPrice);
         panier.appendChild(newProduct);
 
-        // newProduct.appendChild(removeButton);
-        // newProduct.appendChild(newImg);
-        // newProduct.appendChild(newDivName);
-        // newProduct.appendChild(newDivPrice);
-
-        // panier.appendChild(newProduct);
     });
     localStorage.setItem("Total", totalPrice);
     document.getElementById('totalPrice').innerHTML = totalPrice;
