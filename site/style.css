@@ -165,8 +165,8 @@ a:hover {
 }
 
 #divImg {
-  max-width: 400px;
-  min-width: 380px;
+  /* max-width: 400px;
+  min-width: 380px; */
   display: flex;
   justify-content: center;
 }
@@ -227,12 +227,13 @@ a:hover {
 
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 1000px) {
 
   .newProduct {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 
   .newDivImg{
@@ -362,6 +363,12 @@ button {
 #textOrderId, #textTotalCommande {
   display: flex;
   justify-content: center;
+}
+
+@media screen and (max-width: 390px) {
+  #textOrderId, #textTotalCommande {
+    display: list-item;
+  }
 }
 
 #totalPrice, #orderId {
