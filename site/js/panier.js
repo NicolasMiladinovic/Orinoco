@@ -58,6 +58,9 @@ function displayAllCart() {
         newImg.setAttribute('src', item.image);
         newImg.setAttribute('id', 'divImg');
 
+        let newDivNameAndPrice = document.createElement('div');
+        newDivNameAndPrice.setAttribute('id','divNameAndPrice');
+
         let newDivName = document.createElement('div');
         newDivName.textContent = item.name;
         newDivName.setAttribute('id', 'divName');
@@ -78,7 +81,6 @@ function displayAllCart() {
         newProduct.appendChild(newDivName);
         newProduct.appendChild(newDivPrice);
         panier.appendChild(newProduct);
-
     });
     localStorage.setItem("Total", totalPrice);
     document.getElementById('totalPrice').innerHTML = totalPrice;
