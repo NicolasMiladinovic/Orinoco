@@ -29,7 +29,7 @@ function displayAllCart() {
         removeButton.setAttribute('aria-label', 'Close');
 
         let optionRemoveButton = document.createElement('i');
-        optionRemoveButton.setAttribute('class','fas fa-trash fa-stack-2x')
+        optionRemoveButton.setAttribute('class', 'fas fa-trash fa-stack-2x')
 
         removeButton.addEventListener('click', function () {
             let mycart = JSON.parse(localStorage.getItem('cart'));
@@ -48,29 +48,29 @@ function displayAllCart() {
         });
 
         let newDivClear = document.createElement('div');
-        newDivClear.setAttribute('class','p-2 flex-fill bd-highlight');
-        newDivClear.setAttribute('id','newDivClear');
+        newDivClear.setAttribute('class', 'p-2 flex-fill bd-highlight');
+        newDivClear.setAttribute('id', 'newDivClear');
 
         let newDivImg = document.createElement('div');
-        newDivImg.setAttribute('class','p-2 flex-fill bd-highlight newDivImg');
+        newDivImg.setAttribute('class', 'p-2 flex-fill bd-highlight newDivImg');
 
         const newImg = document.createElement("img");
         newImg.setAttribute('src', item.image);
         newImg.setAttribute('id', 'divImg');
 
         let newDivNameAndPrice = document.createElement('div');
-        newDivNameAndPrice.setAttribute('id','divNameAndPrice');
+        newDivNameAndPrice.setAttribute('id', 'divNameAndPrice');
 
         let newDivName = document.createElement('div');
         newDivName.textContent = item.name;
         newDivName.setAttribute('id', 'divName');
-        newDivName.setAttribute('class','p-2 flex-fill bd-highlight');
+        newDivName.setAttribute('class', 'p-2 flex-fill bd-highlight');
 
         let newDivPrice = document.createElement('div');
-        newDivPrice.textContent = item.price/100 + " €";
-        totalPrice += item.price/100;
+        newDivPrice.textContent = item.price / 100 + " €";
+        totalPrice += item.price / 100;
         newDivPrice.setAttribute('id', 'divPrice');
-        newDivPrice.setAttribute('class','p-2 flex-fill bd-highlight');
+        newDivPrice.setAttribute('class', 'p-2 flex-fill bd-highlight');
 
         removeButton.appendChild(optionRemoveButton);
 
@@ -96,8 +96,7 @@ function sendCommand() {
 
     //Creation of POST XMLHTTPRequest 
     const xhr = new XMLHttpRequest();
-    
-
+    xhr.open('POST', 'http://localhost:3000/api/teddies/order');
     xhr.onload = () => {
         if (xhr.status >= 200 && xhr.status < 300) {
             const response = JSON.parse(xhr.responseText);
@@ -106,10 +105,33 @@ function sendCommand() {
             console.log(response.orderId);
         }
     };
-
-    xhr.open('POST', 'http://localhost:3000/api/teddies/order');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(bodyJson));
-    
-    
 };
+
+
+// xhr request promise
+
+function makeRequest(method, url, done) {
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('POST', 'http://localhost:3000/api/teddies/order');
+    xhr.onload = () => {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            const response = JSON.parse(xhr.responseText);
+            localStorage.setItem("orderId", response.orderId)
+        }
+        done(null, xhr.response);
+    };
+    xhr.onerror = function () {
+        done(xhr.response);
+    };
+    xhr.send();
+}
+
+// And we'd call it as such:
+
+makeRequest('GET', 'http://example.com', function (err, datums) {
+    if (err) { throw err; }
+    console.log(datums);
+});

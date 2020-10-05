@@ -173,7 +173,7 @@ a:hover {
 
 }
 
-#divName, #divPrice {
+#divName {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -186,7 +186,9 @@ a:hover {
 }
 
 #divPrice {
-  align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 2em;
 }
 
 #price {
@@ -203,8 +205,7 @@ a:hover {
 
 #prixBarre {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row-reverse;
 }
 
 
