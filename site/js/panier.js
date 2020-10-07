@@ -99,6 +99,7 @@ function sendCommand() {
     xhr.open('POST', 'http://localhost:3000/api/teddies/order');
     xhr.onload = () => {
         if (xhr.status >= 200 && xhr.status < 300) {
+            console.log('1')
             const response = JSON.parse(xhr.responseText);
             console.log(response);
             localStorage.setItem("orderId", response.orderId)
@@ -109,29 +110,49 @@ function sendCommand() {
     xhr.send(JSON.stringify(bodyJson));
 };
 
+function sendCommand2() {
+    bodyJson.contact.firstName = document.getElementById('firstname').value;
+    bodyJson.contact.lastName = document.getElementById('name').value;
+    bodyJson.contact.address = document.getElementById('address').value;
+    bodyJson.contact.city = document.getElementById('city').value;
+    bodyJson.contact.email = document.getElementById('email').value;
 
-// xhr request promise
+    let makeRequest = () => {
+        return new Promise((resolve, reject) => {
+            let xhr = new XMLHttpRequest()
 
-function makeRequest(method, url, done) {
-    const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://localhost:3000/api/teddies/order')
 
-    xhr.open('POST', 'http://localhost:3000/api/teddies/order');
-    xhr.onload = () => {
-        if (xhr.status >= 200 && xhr.status < 300) {
-            const response = JSON.parse(xhr.responseText);
-            localStorage.setItem("orderId", response.orderId)
-        }
-        done(null, xhr.response);
-    };
-    xhr.onerror = function () {
-        done(xhr.response);
-    };
-    xhr.send();
+            xhr.onload = () => {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    resolve(JSON.parse(xhr.responseText))
+                } else {
+                    reject({
+                        status: xhr.status,
+                        statusText: xhr.statusText
+                    })
+                }
+            }
+
+            xhr.onerror = () => {
+                reject({
+                    status: xhr.status,
+                    statusText: xhr.statusText
+                })
+            }
+            
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(bodyJson));
+        })
+    }
+
+    makeRequest()
+        .then((data) => {
+            console.log(data)
+            localStorage.setItem("orderId", data.orderId)
+            console.log(data.orderId);
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 }
-
-// And we'd call it as such:
-
-makeRequest('GET', 'http://example.com', function (err, datums) {
-    if (err) { throw err; }
-    console.log(datums);
-});

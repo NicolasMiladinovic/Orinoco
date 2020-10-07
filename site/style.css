@@ -359,6 +359,7 @@ button {
 #titleConfirmation {
   display: flex;
   justify-content: center;
+  margin: 0 2% 0 2%;
 }
 
 #textOrderId { 

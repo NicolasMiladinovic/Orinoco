@@ -28,7 +28,8 @@
 
     <div id="produit"></div>
     <div class="d-flex bd-highlight divTotal">
-        <div class="p-2 flex-fill bd-highlight" id="total"><span id="txtTotal"> TOTAL </span> <span id="totalPrice"></span> €</div>
+        <div class="p-2 flex-fill bd-highlight" id="total"><span id="txtTotal"> TOTAL </span> <span
+                id="totalPrice"></span> €</div>
     </div>
 
     <form id="form">
@@ -40,7 +41,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="">Prénom</label>
-                <input type="text" class="form-control" id="firstname">
+                <input type="text" class="form-control" id="firstname" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="">Nom</label>
@@ -48,16 +49,16 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="inputAddress">Email</label>
+            <label for="">Email</label>
             <input type="email" class="form-control" id="email" placeholder="exemple@orinoco.com">
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputAddress">Adresse</label>
+                <label for="">Adresse</label>
                 <input type="text" class="form-control" id="address" placeholder="Numéro Rue, Avenue ">
             </div>
             <div class="form-group col-md-6">
-                <label for="inputCity">Ville</label>
+                <label for="">Ville</label>
                 <input type="text" class="form-control" id="city">
             </div>
         </div>
@@ -65,7 +66,7 @@
 
     <div class="d-flex bd-highlight">
         <div class="d-flex bd-highlight" id="buttonCommand">
-            <button type="submit" class="btn btn-primary" onclick="sendCommand()"><a href="confirmation.html">Commander</a></button>
+            <button type="submit" class="btn btn-primary" onclick="sendCommand2()">Commander</button>
         </div>
     </div>
 
