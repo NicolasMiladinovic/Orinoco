@@ -21,7 +21,10 @@ function displayAllCart() {
         bodyJson.products.push(item.id);
 
         let newProduct = document.createElement('div');
-        newProduct.setAttribute('class', 'newProduct d-flex bd-highlight');
+        newProduct.setAttribute('class', 'newProduct');
+
+        let newDivPosition = document.createElement('div');
+        newDivPosition.setAttribute('id','newDivPosition');
 
         removeButton = document.createElement('button');
         removeButton.setAttribute('type', 'button');
@@ -48,38 +51,38 @@ function displayAllCart() {
         });
 
         let newDivClear = document.createElement('div');
-        newDivClear.setAttribute('class', 'p-2 flex-fill bd-highlight');
-        newDivClear.setAttribute('id', 'newDivClear');
 
         let newDivImg = document.createElement('div');
-        newDivImg.setAttribute('class', 'p-2 flex-fill bd-highlight newDivImg');
-
+    
         const newImg = document.createElement("img");
         newImg.setAttribute('src', item.image);
-        newImg.setAttribute('id', 'divImg');
+        newImg.setAttribute('id','imgPanier');
+       
 
         let newDivNameAndPrice = document.createElement('div');
-        newDivNameAndPrice.setAttribute('id', 'divNameAndPrice');
+    
 
         let newDivName = document.createElement('div');
         newDivName.textContent = item.name;
-        newDivName.setAttribute('id', 'divName');
-        newDivName.setAttribute('class', 'p-2 flex-fill bd-highlight');
+
+        let newDivOpt = document.createElement('div');
+        newDivOpt.textContent = item.option;
+        
 
         let newDivPrice = document.createElement('div');
         newDivPrice.textContent = item.price / 100 + " €";
         totalPrice += item.price / 100;
-        newDivPrice.setAttribute('id', 'divPrice');
-        newDivPrice.setAttribute('class', 'p-2 flex-fill bd-highlight');
-
+        
+     
         removeButton.appendChild(optionRemoveButton);
-
-        newProduct.appendChild(newDivClear);
-        newDivClear.appendChild(removeButton);
+        newProduct.appendChild(newDivPosition);
         newProduct.appendChild(newDivImg);
         newDivImg.appendChild(newImg);
-        newProduct.appendChild(newDivName);
-        newProduct.appendChild(newDivPrice);
+        newDivPosition.appendChild(newDivClear);
+        newDivPosition.appendChild(removeButton);
+        newDivPosition.appendChild(newDivName);
+        newDivPosition.appendChild(newDivOpt);
+        newDivPosition.appendChild(newDivPrice);
         panier.appendChild(newProduct);
     });
     localStorage.setItem("Total", totalPrice);
@@ -110,49 +113,3 @@ function sendCommand() {
     xhr.send(JSON.stringify(bodyJson));
 };
 
-function sendCommand2() {
-    bodyJson.contact.firstName = document.getElementById('firstname').value;
-    bodyJson.contact.lastName = document.getElementById('name').value;
-    bodyJson.contact.address = document.getElementById('address').value;
-    bodyJson.contact.city = document.getElementById('city').value;
-    bodyJson.contact.email = document.getElementById('email').value;
-
-    let makeRequest = () => {
-        return new Promise((resolve, reject) => {
-            let xhr = new XMLHttpRequest()
-
-            xhr.open('POST', 'http://localhost:3000/api/teddies/order')
-
-            xhr.onload = () => {
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    resolve(JSON.parse(xhr.responseText))
-                } else {
-                    reject({
-                        status: xhr.status,
-                        statusText: xhr.statusText
-                    })
-                }
-            }
-
-            xhr.onerror = () => {
-                reject({
-                    status: xhr.status,
-                    statusText: xhr.statusText
-                })
-            }
-            
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify(bodyJson));
-        })
-    }
-
-    makeRequest()
-        .then((data) => {
-            console.log(data)
-            localStorage.setItem("orderId", data.orderId)
-            console.log(data.orderId);
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-}

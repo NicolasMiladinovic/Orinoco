@@ -4,7 +4,6 @@
        url('fonts/champagnelimousines_bold-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-
 }
 
 header {
@@ -22,7 +21,6 @@ header {
 h1, h2, h5, #panierBarre, #formTitle {
   font-family: 'champagne__limousinesbold';
 }
-
 
 @media screen and (min-width: 1100px) {
   #teddys {
@@ -42,9 +40,16 @@ h1, h2, h5, #panierBarre, #formTitle {
 
 @media screen and (min-width: 1100px) {
   #cameras {
+    margin-top: 100px;
     margin-right: auto;
     margin-left: auto;
     width: 70%;
+  }
+}
+
+@media screen and (max-width: 840px) and (min-width: 801px) {
+  #cameras {
+    margin-top: 100px;
   }
 }
 
@@ -144,12 +149,6 @@ a:hover {
   }
 }
 
-.newProduct, #panierBarre {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 #newDivClear, #supprimerBarre {
   max-width: 150px;
   min-width: 150px;
@@ -163,32 +162,12 @@ a:hover {
   position: relative;
 }
 
-.newDivImg, #nomBarre {
-  max-width: 400px;
-  min-width: 350px;
-}
-
-#divImg {
-  max-width: 150px;
-
-}
-
-#divName {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 2em;
-}
-
-#divName, #videBarre {
-  max-width: 390px;
-  min-width: 350px;
-}
 
 #divPrice {
   display: flex;
   flex-direction: row-reverse;
   font-size: 2em;
+  align-items: center;
 }
 
 #price {
@@ -214,59 +193,6 @@ a:hover {
     min-width: 0;
   }
 
-}
-
-@media screen and (max-width: 1000px) {
-
-  .newProduct {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #divName {
-    font-size: 20px;
-  }
-
-  #divPrice {
-    font-size: 20px;
-  }
-
-
-  .fa-stack-2x {
-    font-size: 20px;
-  }
-
-  #newDivClear {
-    min-width: 30px;
-  }
-
-  .newDivImg {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .newDivImg, #nomBarre {
-    min-width: 0;
-  }
-
-  #nomBarre, #supprimerBarre, #videBarre, #prixBarre {
-    display: none;
-  }
-
-  #panierBarre {
-    border: none;
-  }
-
-  #divImg {
-    min-width: 105px;
-  }
-
-  #divName {
-    display: none;
-  }
 }
 
 .divTotal {
@@ -327,21 +253,18 @@ button {
   }
 }
 
-/* .contentTextProduct {
-  
-} */
-
 .no-gutters>.col, .no-gutters>[class*=col-] {
   padding-right: 2%;
   padding-left: 2%;
 }
 
 #form {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5%;
+  max-width: 360px;
+  min-width: 324px;
+  height: 442px;
+  margin: 0 auto 0 auto;
   font-size: 1.5rem;
+  background-color: white;
 }
 
 #buttonCommand {
@@ -351,7 +274,7 @@ button {
 }
 
 #formTitle {
-  font-size: 2rem;
+  font-size: 1.15em;
   border-bottom: solid;
   margin-bottom: 2%;
 }
@@ -393,4 +316,50 @@ button {
 #total {
   font-size: 26px;
   font-weight: bold;
+}
+
+#bodyPanier {
+  background-color: #eeeeee;
+}
+
+#panier {
+  display: flex;
+}
+
+#produit {
+  min-width: 515px;
+  max-width: 570px;
+  margin: 0 auto 0 auto;
+  background-color: white;
+}
+
+@media screen and (max-width: 890px) {
+  #panier {
+    flex-direction: column;
+  }
+
+  #produit, #form {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  
+}
+
+#imgPanier {
+  width: 140px;
+  height: 140px;
+  margin: 16px;
+}
+
+.newProduct {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px solid #eee;
+}
+
+#newDivPosition {
+  width: 327px;
 }

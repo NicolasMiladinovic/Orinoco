@@ -67,6 +67,7 @@ function displayProduct(data) {
 
 
     let objectSlt = document.createElement('select')
+    objectSlt.setAttribute('id','selection');
     objectSlt.setAttribute('class','card-select');
     let objectHidOpt = document.createElement('option')
     objectHidOpt.setAttribute('hidden', '')
@@ -109,6 +110,15 @@ function displayProduct(data) {
 
 
 function displayAddCart(data) {
+
+    const selectBox = document.getElementById('selection');
+    let selectedElement;
+
+    selectBox.addEventListener('change', (event) => {
+    console.log(event.target.value);
+    selectedElement = event.target.value;
+    });
+
     button.setAttribute("id", objectId);
     button.setAttribute("value", objectId);
     button.setAttribute("class", "addCartButton btn btn-success");
@@ -119,7 +129,7 @@ function displayAddCart(data) {
         if (actualCart != null) {
             actualCartInJson = JSON.parse(actualCart);
         }
-        let newElement = { id: data._id, name: data.name, price: data.price, image: data.imageUrl };
+        let newElement = { id: data._id, name: data.name, price: data.price, image: data.imageUrl, option: selectedElement };
         actualCartInJson.push(newElement);
         localStorage.setItem("cart", JSON.stringify(actualCartInJson));
         console.log(actualCartInJson);
