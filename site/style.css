@@ -259,9 +259,10 @@ button {
 }
 
 #form {
+  padding: 10px;
   max-width: 360px;
   min-width: 324px;
-  height: 442px;
+  height: 455px;
   margin: 0 auto 0 auto;
   font-size: 1.5rem;
   background-color: white;
@@ -315,7 +316,7 @@ button {
 
 #total {
   font-size: 26px;
-  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 #bodyPanier {
@@ -333,18 +334,7 @@ button {
   background-color: white;
 }
 
-@media screen and (max-width: 890px) {
-  #panier {
-    flex-direction: column;
-  }
 
-  #produit, #form {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-  }
-  
-}
 
 #imgPanier {
   width: 140px;
@@ -362,4 +352,26 @@ button {
 
 #newDivPosition {
   width: 327px;
+}
+
+@media screen and (max-width: 890px) {
+  #panier {
+    flex-direction: column;
+  }
+
+  #produit, #form {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  #form {
+    margin-top: 15px;
+    height: 100%;
+  }
+
+  #newDivPosition {
+    width: 696px;
+  }
+  
 }
