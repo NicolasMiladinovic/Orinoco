@@ -18,7 +18,7 @@ header {
   letter-spacing: -3px;
 }
 
-h1, h2, h5, #panierBarre, #formTitle {
+h1, h2, h5, #panierBarre, #formTitle, #total, #newDivPosition, #form {
   font-family: 'champagne__limousinesbold';
 }
 
@@ -262,9 +262,9 @@ button {
   padding: 10px;
   max-width: 360px;
   min-width: 324px;
-  height: 455px;
-  margin: 0 auto 0 auto;
-  font-size: 1.5rem;
+  height: 410px;
+  margin: 0 5px 0 5px;
+  font-size: 1rem;
   background-color: white;
 }
 
@@ -275,7 +275,7 @@ button {
 }
 
 #formTitle {
-  font-size: 1.15em;
+  font-size: 1.40em;
   border-bottom: solid;
   margin-bottom: 2%;
 }
@@ -315,8 +315,12 @@ button {
 }
 
 #total {
-  font-size: 26px;
+  font-size: 1.15em;
   margin-bottom: 10px;
+}
+
+#totaltxt {
+  font-weight: bold;
 }
 
 #bodyPanier {
@@ -325,12 +329,13 @@ button {
 
 #panier {
   display: flex;
+  justify-content: center;
 }
 
 #produit {
   min-width: 515px;
   max-width: 570px;
-  margin: 0 auto 0 auto;
+  margin: 0 5px 0 5px;
   background-color: white;
 }
 
@@ -371,7 +376,8 @@ button {
   }
 
   #newDivPosition {
-    width: 696px;
+    width: 100%;
+    margin-right: 16px;
   }
   
 }
