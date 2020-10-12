@@ -335,6 +335,7 @@ button {
 #produit {
   min-width: 515px;
   max-width: 570px;
+  height: 100%;
   margin: 0 5px 0 5px;
   background-color: white;
 }

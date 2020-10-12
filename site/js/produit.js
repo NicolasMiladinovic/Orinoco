@@ -48,7 +48,7 @@ function displayProduct(data) {
     const divColText = document.createElement('div');
     divColText.setAttribute('class', 'col-md-8 contentTextProduct');
 
-   
+
     divTextContent.setAttribute('class', 'card-body');
 
     const title = document.createElement('h5');
@@ -61,18 +61,19 @@ function displayProduct(data) {
     p.textContent = data.description;
 
     const newPPrice = document.createElement('p');
-    newPPrice.textContent = data.price/100 + " €";
+    newPPrice.textContent = data.price / 100 + " €";
     newPPrice.setAttribute('class', 'card-text');
     newPPrice.setAttribute('id', 'price');
 
 
     let objectSlt = document.createElement('select')
-    objectSlt.setAttribute('id','selection');
-    objectSlt.setAttribute('class','card-select');
-    let objectHidOpt = document.createElement('option')
-    objectHidOpt.setAttribute('hidden', '')
-    objectHidOpt.textContent = "Option"
-    objectSlt.appendChild(objectHidOpt)
+    objectSlt.setAttribute('id', 'selection');
+    objectSlt.setAttribute('class', 'card-select');
+    objectSlt.setAttribute('title','Option');
+    // let objectHidOpt = document.createElement('option')
+    // objectHidOpt.setAttribute('hidden', '')
+    // objectHidOpt.textContent = "Option"
+    // objectSlt.appendChild(objectHidOpt)
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     let type = urlParams.get('type');
@@ -115,24 +116,27 @@ function displayAddCart(data) {
     let selectedElement;
 
     selectBox.addEventListener('change', (event) => {
-    console.log(event.target.value);
-    selectedElement = event.target.value;
+        console.log(event.target.value);
+        selectedElement = event.target.value;
+        console.log(selectedElement);
+        console.log(typeof selectedElement);
     });
 
     button.setAttribute("id", objectId);
     button.setAttribute("value", objectId);
     button.setAttribute("class", "addCartButton btn btn-success");
     button.textContent = "Ajouter au panier";
-    button.addEventListener("click", function (e) {
-        let actualCart = localStorage.getItem("cart");
-        let actualCartInJson = [];
-        if (actualCart != null) {
-            actualCartInJson = JSON.parse(actualCart);
-        }
-        let newElement = { id: data._id, name: data.name, price: data.price, image: data.imageUrl, option: selectedElement };
-        actualCartInJson.push(newElement);
-        localStorage.setItem("cart", JSON.stringify(actualCartInJson));
-        console.log(actualCartInJson);
-    });
+
+        button.addEventListener("click", function (e) {
+            let actualCart = localStorage.getItem("cart");
+            let actualCartInJson = [];
+            if (actualCart != null) {
+                actualCartInJson = JSON.parse(actualCart);
+            }
+            let newElement = { id: data._id, name: data.name, price: data.price, image: data.imageUrl, option: selectedElement };
+            actualCartInJson.push(newElement);
+            localStorage.setItem("cart", JSON.stringify(actualCartInJson));
+            console.log(actualCartInJson);
+        });
     divTextContent.appendChild(button)
 }
