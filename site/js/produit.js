@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     const urlParams = new URLSearchParams(queryString);
     objectId = urlParams.get('id');
     let type = urlParams.get('type');
-    console.log("je cherche " + objectId + ' de type ' + type);
-    // ajaxGet("http://localhost:3000/api/" + type + "/" + objectId, displayObject);
     let request = new XMLHttpRequest();
     request.open('GET', "http://localhost:3000/api/" + type + "/" + objectId, true);
     request.onload = function () {
@@ -23,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
             errorMessage.textContent = "It's not working !";
             teddys_div.appendChild(errorMessage);
         };
-        console.log(data.name);
         displayProduct(data);
         displayAddCart(data);
     };
@@ -41,7 +38,6 @@ function displayProduct(data) {
     divColImg.setAttribute('class', 'col-md-4');
 
     const newImg = document.createElement("img");
-    console.log(data.imageUrl);
     newImg.setAttribute('src', data.imageUrl);
     newImg.setAttribute('id', 'imgProduct')
 
@@ -116,10 +112,7 @@ function displayAddCart(data) {
     let selectedElement;
 
     selectBox.addEventListener('change', (event) => {
-        console.log(event.target.value);
         selectedElement = event.target.value;
-        console.log(selectedElement);
-        console.log(typeof selectedElement);
     });
 
     button.setAttribute("id", objectId);
