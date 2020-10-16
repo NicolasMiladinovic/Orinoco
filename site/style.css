@@ -269,9 +269,7 @@ button {
 }
 
 #buttonCommand {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10%;
+  margin: 32px auto 10% auto;
 }
 
 #formTitle {

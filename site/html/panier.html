@@ -23,7 +23,7 @@
 
         <div id="produit"></div>
 
-        <form id="form">
+        <form id="form" class="needs-validation" novalidate>
 
             <div id="total"><span id="totaltxt"> TOTAL </span> <span id="totalPrice"></span> €</div>
 
@@ -32,41 +32,53 @@
                     Passez votre commande !
                 </div>
             </div>
+
+            <!-- Form -->
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="">Prénom</label>
-                    <input type="text" class="form-control" id="firstname" required>
+                <div class="col-md-6">
+                    <label for="validationTooltip01">Prénom</label>
+                    <input type="text" class="form-control" id="validationTooltip01" required>
+                    <div class="valid-tooltip">
+                        Looks good!
+                    </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="">Nom</label>
-                    <input type="text" class="form-control" id="name" required>
+                <div class="col-md-6">
+                    <label for="validationTooltip02">Nom</label>
+                    <input type="text" class="form-control" id="validationTooltip02" required>
+                    <div class="valid-tooltip">
+                        Looks good!
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="exemple@orinoco.com" required>
+            <div>
+                <label>Email</label>
+                <input type="email" class="form-control" placeholder="exemple@orinoco.com" required>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="">Adresse</label>
-                    <input type="text" class="form-control" id="address" required>
+                <div class="col-md-6">
+                    <label for="validationTooltip03">Adresse</label>
+                    <input type="text" class="form-control" id="validationTooltip03" required>
+                    <div class="invalid-tooltip">
+                        Indiquez une adresse valide.
+                    </div>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="">Ville</label>
-                    <input type="text" class="form-control" id="city" required>
+                <div class="col-md-6">
+                    <label for="validationTooltip03">Ville</label>
+                    <input type="text" class="form-control" id="validationTooltip03" required>
+                    <div class="invalid-tooltip">
+                        Indiquez une ville valide.
+                    </div>
                 </div>
             </div>
 
             <div class="d-flex bd-highlight">
                 <div class="d-flex bd-highlight" id="buttonCommand">
                     <button type="submit" class="btn btn-primary" onclick="sendCommand()">
-                        <a >Commander</a>
+                        Commander
                     </button>
                 </div>
             </div>
-
         </form>
-
     </div>
 
     <script src="../js/panier.js"></script>

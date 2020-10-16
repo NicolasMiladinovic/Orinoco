@@ -65,11 +65,13 @@ function displayProduct(data) {
     let objectSlt = document.createElement('select')
     objectSlt.setAttribute('id', 'selection');
     objectSlt.setAttribute('class', 'card-select');
-    objectSlt.setAttribute('title','Option');
-    // let objectHidOpt = document.createElement('option')
-    // objectHidOpt.setAttribute('hidden', '')
-    // objectHidOpt.textContent = "Option"
-    // objectSlt.appendChild(objectHidOpt)
+    // let objectFirstElem = document.createComment('option');
+    // objectFirstElem.textContent = "test";
+    let objectHidOpt = document.createElement('option')
+    objectHidOpt.setAttribute('hidden', '')
+    objectHidOpt.textContent = "Option"
+    objectSlt.appendChild(objectHidOpt)
+
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     let type = urlParams.get('type');
@@ -100,6 +102,7 @@ function displayProduct(data) {
     divColText.appendChild(divTextContent);
     divTextContent.appendChild(title);
     divTextContent.appendChild(p);
+    objectSlt.appendChild(objectHidOpt);
     divTextContent.appendChild(objectSlt);
     divTextContent.appendChild(newPPrice);
 };
