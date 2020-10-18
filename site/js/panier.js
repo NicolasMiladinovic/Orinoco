@@ -115,7 +115,6 @@ function displayAllCart() {
 
 function sendCommand() {
     
-    // window.location.href = "../html/confirmation.html";
         bodyJson.contact.firstName = document.getElementById('firstname').value;
         bodyJson.contact.lastName = document.getElementById('name').value;
         bodyJson.contact.address = document.getElementById('address').value;

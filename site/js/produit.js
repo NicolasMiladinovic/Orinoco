@@ -68,7 +68,7 @@ function displayProduct(data) {
     // let objectFirstElem = document.createComment('option');
     // objectFirstElem.textContent = "test";
     let objectHidOpt = document.createElement('option')
-    objectHidOpt.setAttribute('hidden', '')
+    // objectHidOpt.setAttribute('hidden', '')
     objectHidOpt.textContent = "Option"
     objectSlt.appendChild(objectHidOpt)
 
@@ -102,7 +102,7 @@ function displayProduct(data) {
     divColText.appendChild(divTextContent);
     divTextContent.appendChild(title);
     divTextContent.appendChild(p);
-    objectSlt.appendChild(objectHidOpt);
+    // objectSlt.appendChild(objectHidOpt);
     divTextContent.appendChild(objectSlt);
     divTextContent.appendChild(newPPrice);
 };
@@ -123,6 +123,9 @@ function displayAddCart(data) {
     button.setAttribute("class", "addCartButton btn btn-success");
     button.textContent = "Ajouter au panier";
 
+    if (selectedElement === 'Option') {
+        console.log("Choisissez une option");
+    } else {
         button.addEventListener("click", function (e) {
             let actualCart = localStorage.getItem("cart");
             let actualCartInJson = [];
@@ -134,5 +137,7 @@ function displayAddCart(data) {
             localStorage.setItem("cart", JSON.stringify(actualCartInJson));
             console.log(actualCartInJson);
         });
+    }
+
     divTextContent.appendChild(button)
 }
