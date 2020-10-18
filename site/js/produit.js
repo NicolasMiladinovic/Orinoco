@@ -118,15 +118,24 @@ function displayAddCart(data) {
         selectedElement = event.target.value;
     });
 
+    console.log(selectedElement);
+    console.log(typeof selectedElement);
+
     button.setAttribute("id", objectId);
     button.setAttribute("value", objectId);
     button.setAttribute("class", "addCartButton btn btn-success");
     button.textContent = "Ajouter au panier";
 
-    if (selectedElement === 'Option') {
-        console.log("Choisissez une option");
-    } else {
-        button.addEventListener("click", function (e) {
+    // if (typeof selectedElement == 'undefined') {
+    //     console.log("Choisissez une option");
+    // } else {
+
+    button.addEventListener("click", function (e) {
+
+        if (typeof selectedElement == 'undefined') {
+            console.log("Choisissez une option");
+        } else {
+
             let actualCart = localStorage.getItem("cart");
             let actualCartInJson = [];
             if (actualCart != null) {
@@ -136,8 +145,9 @@ function displayAddCart(data) {
             actualCartInJson.push(newElement);
             localStorage.setItem("cart", JSON.stringify(actualCartInJson));
             console.log(actualCartInJson);
-        });
-    }
+        }
+    });
+    // }
 
     divTextContent.appendChild(button)
 }
