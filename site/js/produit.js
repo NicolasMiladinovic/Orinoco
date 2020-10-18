@@ -35,11 +35,10 @@ function displayProduct(data) {
     row.setAttribute('class', 'row no-gutters');
 
     const divColImg = document.createElement('div');
-    divColImg.setAttribute('class', 'col-md-4');
+    divColImg.setAttribute('class', 'col-md-4 imgProduct');
 
     const newImg = document.createElement("img");
     newImg.setAttribute('src', data.imageUrl);
-    newImg.setAttribute('id', 'imgProduct')
 
     const divColText = document.createElement('div');
     divColText.setAttribute('class', 'col-md-8 contentTextProduct');
@@ -95,6 +94,10 @@ function displayProduct(data) {
         });
     };
 
+    const errorMsg = document.createElement('div');
+    errorMsg.setAttribute('id','errorMsg');
+
+
     card.appendChild(row);
     row.appendChild(divColImg);
     divColImg.appendChild(newImg);
@@ -104,6 +107,7 @@ function displayProduct(data) {
     divTextContent.appendChild(p);
     // objectSlt.appendChild(objectHidOpt);
     divTextContent.appendChild(objectSlt);
+    divTextContent.appendChild(errorMsg);
     divTextContent.appendChild(newPPrice);
 };
 
@@ -134,6 +138,7 @@ function displayAddCart(data) {
 
         if (typeof selectedElement == 'undefined') {
             console.log("Choisissez une option");
+            document.getElementById('errorMsg').innerHTML = 'Choisissez une option.'
         } else {
 
             let actualCart = localStorage.getItem("cart");

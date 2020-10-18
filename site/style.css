@@ -134,20 +134,19 @@ a:hover {
   right: 37px;
 }
 
+.fa-shopping-cart:hover {
+  color: #eeeeeed7;
+}
+
 #product {
   margin-right: auto;
   margin-left: auto;
 }
 
-#imgProduct {
-  margin-top: 20%;
+.imgProduct {
+  margin: auto;
 }
 
-@media screen and (max-width: 768px) {
-  #imgProduct {
-    margin-top: 0;
-  }
-}
 
 #newDivClear, #supprimerBarre {
   max-width: 150px;
@@ -236,8 +235,19 @@ button {
   margin-top: 3%;
 }
 
+#errorMsg {
+  margin-top: -33px;
+  height: 30px;
+  color: red;
+  font-style: italic;
+}
+
 .row {
   margin: 0%;
+}
+
+.container {
+  text-align: center;
 }
 
 @media (min-width: 576px) {
@@ -380,3 +390,4 @@ button {
   }
   
 }
+
