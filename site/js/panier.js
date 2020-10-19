@@ -9,23 +9,21 @@ let bodyJson = {
     products: []
 };
 
-(function() {
+(function () {
     'use strict';
-    window.addEventListener('load', function() {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName('needs-validation');
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
+    window.addEventListener('load', function () {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
     }, false);
-  })();
+})();
 
 function displayAllCart() {
     let cartContent = localStorage.getItem('cart');
@@ -79,9 +77,7 @@ function displayAllCart() {
             newImg.setAttribute('src', item.image);
             newImg.setAttribute('id', 'imgPanier');
 
-
             let newDivNameAndPrice = document.createElement('div');
-
 
             let newDivName = document.createElement('div');
             newDivName.textContent = item.name;
@@ -89,11 +85,9 @@ function displayAllCart() {
             let newDivOpt = document.createElement('div');
             newDivOpt.textContent = item.option;
 
-
             let newDivPrice = document.createElement('div');
             newDivPrice.textContent = item.price / 100 + " €";
             totalPrice += item.price / 100;
-
 
             removeButton.appendChild(optionRemoveButton);
             newProduct.appendChild(newDivPosition);
@@ -113,26 +107,78 @@ function displayAllCart() {
     document.getElementById('totalPrice').innerHTML = totalPrice;
 }
 
-function sendCommand() {
+function sendCommand(event) {
     
-        bodyJson.contact.firstName = document.getElementById('firstname').value;
-        bodyJson.contact.lastName = document.getElementById('name').value;
-        bodyJson.contact.address = document.getElementById('address').value;
-        bodyJson.contact.city = document.getElementById('city').value;
-        bodyJson.contact.email = document.getElementById('email').value;
+    event.preventDefault();
 
-        //Creation of POST XMLHTTPRequest 
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:3000/api/teddies/order');
-        xhr.onload = () => {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                const response = JSON.parse(xhr.responseText);
-                console.log(response);
-                localStorage.setItem("orderId", response.orderId);
-                console.log(response.orderId);
-                console.log('test');
+    bodyJson.contact.firstName = document.getElementById('firstname').value;
+    bodyJson.contact.lastName = document.getElementById('name').value;
+    bodyJson.contact.address = document.getElementById('address').value;
+    bodyJson.contact.city = document.getElementById('city').value;
+    bodyJson.contact.email = document.getElementById('email').value;
+    let makeRequest = () => {
+        return new Promise((resolve, reject) => {
+            let xhr = new XMLHttpRequest()
+
+            xhr.open('POST', 'http://localhost:3000/api/teddies/order')
+
+            xhr.onload = () => {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    resolve(JSON.parse(xhr.responseText))
+                    console.log('1');
+                    document.location.href = '../html/confirmation.html';
+                } else {
+                    reject({
+                        status: xhr.status,
+                        statusText: xhr.statusText
+                    })
+                }
             }
-        };
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify(bodyJson));
-};
+            xhr.onerror = () => {
+                reject({
+                    status: xhr.status,
+                    statusText: xhr.statusText
+                })
+            }
+
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(bodyJson));
+        })
+    }
+
+    makeRequest()
+        .then((data) => {
+          
+            localStorage.setItem("orderId", data.orderId)
+           
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}
+
+
+// function sendCommand(event) {
+//     event.preventDefault();
+
+//     bodyJson.contact.firstName = document.getElementById('firstname').value;
+//     bodyJson.contact.lastName = document.getElementById('name').value;
+//     bodyJson.contact.address = document.getElementById('address').value;
+//     bodyJson.contact.city = document.getElementById('city').value;
+//     bodyJson.contact.email = document.getElementById('email').value;
+
+//     //Creation of POST XMLHTTPRequest 
+//     const xhr = new XMLHttpRequest();
+//     xhr.open('POST', 'http://localhost:3000/api/teddies/order');
+//     xhr.onload = () => {
+//         if (xhr.status >= 200 && xhr.status < 300) {
+//             const response = JSON.parse(xhr.responseText);
+//             console.log(response);
+//             localStorage.setItem("orderId", response.orderId);
+//             console.log(response.orderId);
+//             document.location.href = '../html/confirmation.html';
+//         }
+//     };
+//     xhr.setRequestHeader('Content-Type', 'application/json');
+//     xhr.send(JSON.stringify(bodyJson));
+// };

@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     request.onload = function () {
         data = JSON.parse(this.response);
         if (request.status >= 200 && request.status < 400) {
-            console.log(data);
+
         } else {
             const errorMessage = document.createElement('marquee');
             errorMessage.textContent = "It's not working !";
@@ -64,10 +64,7 @@ function displayProduct(data) {
     let objectSlt = document.createElement('select')
     objectSlt.setAttribute('id', 'selection');
     objectSlt.setAttribute('class', 'card-select');
-    // let objectFirstElem = document.createComment('option');
-    // objectFirstElem.textContent = "test";
     let objectHidOpt = document.createElement('option')
-    // objectHidOpt.setAttribute('hidden', '')
     objectHidOpt.textContent = "Option"
     objectSlt.appendChild(objectHidOpt)
 
@@ -105,7 +102,6 @@ function displayProduct(data) {
     divColText.appendChild(divTextContent);
     divTextContent.appendChild(title);
     divTextContent.appendChild(p);
-    // objectSlt.appendChild(objectHidOpt);
     divTextContent.appendChild(objectSlt);
     divTextContent.appendChild(errorMsg);
     divTextContent.appendChild(newPPrice);
@@ -122,22 +118,14 @@ function displayAddCart(data) {
         selectedElement = event.target.value;
     });
 
-    console.log(selectedElement);
-    console.log(typeof selectedElement);
-
     button.setAttribute("id", objectId);
     button.setAttribute("value", objectId);
     button.setAttribute("class", "addCartButton btn btn-success");
     button.textContent = "Ajouter au panier";
 
-    // if (typeof selectedElement == 'undefined') {
-    //     console.log("Choisissez une option");
-    // } else {
-
     button.addEventListener("click", function (e) {
 
         if (typeof selectedElement == 'undefined') {
-            console.log("Choisissez une option");
             document.getElementById('errorMsg').innerHTML = 'Choisissez une option.'
         } else {
 
@@ -149,10 +137,8 @@ function displayAddCart(data) {
             let newElement = { id: data._id, name: data.name, price: data.price, image: data.imageUrl, option: selectedElement };
             actualCartInJson.push(newElement);
             localStorage.setItem("cart", JSON.stringify(actualCartInJson));
-            console.log(actualCartInJson);
         }
     });
-    // }
 
     divTextContent.appendChild(button)
 }
