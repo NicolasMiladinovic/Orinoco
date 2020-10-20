@@ -148,12 +148,11 @@ function sendCommand(event) {
 
     makeRequest()
         .then((data) => {
-          
-            localStorage.setItem("orderId", data.orderId)
-           
+            localStorage.setItem("orderId", data.orderId);
         })
         .catch((err) => {
-            console.log(err)
+            console.log(err);
+            document.querySelectorAll('input').setAttribute('class','is-invalid');
         })
 }
 
