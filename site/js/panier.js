@@ -109,13 +109,12 @@ function displayAllCart() {
 
 function sendCommand(event) {
     
-    event.preventDefault();
-
     bodyJson.contact.firstName = document.getElementById('firstname').value;
     bodyJson.contact.lastName = document.getElementById('name').value;
     bodyJson.contact.address = document.getElementById('address').value;
     bodyJson.contact.city = document.getElementById('city').value;
     bodyJson.contact.email = document.getElementById('email').value;
+
     let makeRequest = () => {
         return new Promise((resolve, reject) => {
             let xhr = new XMLHttpRequest()
@@ -125,8 +124,6 @@ function sendCommand(event) {
             xhr.onload = () => {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     resolve(JSON.parse(xhr.responseText))
-                    console.log('1');
-                    document.location.href = '../html/confirmation.html';
                 } else {
                     reject({
                         status: xhr.status,
@@ -152,32 +149,5 @@ function sendCommand(event) {
         })
         .catch((err) => {
             console.log(err);
-            document.querySelectorAll('input').setAttribute('class','is-invalid');
         })
 }
-
-
-// function sendCommand(event) {
-//     event.preventDefault();
-
-//     bodyJson.contact.firstName = document.getElementById('firstname').value;
-//     bodyJson.contact.lastName = document.getElementById('name').value;
-//     bodyJson.contact.address = document.getElementById('address').value;
-//     bodyJson.contact.city = document.getElementById('city').value;
-//     bodyJson.contact.email = document.getElementById('email').value;
-
-//     //Creation of POST XMLHTTPRequest 
-//     const xhr = new XMLHttpRequest();
-//     xhr.open('POST', 'http://localhost:3000/api/teddies/order');
-//     xhr.onload = () => {
-//         if (xhr.status >= 200 && xhr.status < 300) {
-//             const response = JSON.parse(xhr.responseText);
-//             console.log(response);
-//             localStorage.setItem("orderId", response.orderId);
-//             console.log(response.orderId);
-//             document.location.href = '../html/confirmation.html';
-//         }
-//     };
-//     xhr.setRequestHeader('Content-Type', 'application/json');
-//     xhr.send(JSON.stringify(bodyJson));
-// };
