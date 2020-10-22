@@ -6,6 +6,8 @@ const container = document.createElement('div');
 container.setAttribute('class', 'container row');
 teddys_div.appendChild(container);
 
+// Appel de l'API teddies
+
 let request = new XMLHttpRequest();
 request.open('GET', 'http://localhost:3000/api/teddies', true);
 request.onload = function () {
@@ -116,7 +118,6 @@ request1.onload = function () {
             cardBody.appendChild(h1);
             cardBody.appendChild(p);
             cardBody.appendChild(pPrice);
-            // cardBody.appendChild(button1);
         });
     } else {
         const errorMessage = document.createElement('marquee');
@@ -128,6 +129,8 @@ request1.onload = function () {
 const container2 = document.createElement('div');
 container2.setAttribute('class', 'container row');
 cameras_div.appendChild(container2);
+
+// Appel de l'API cameras
 
 let request2 = new XMLHttpRequest();
 request2.open('GET', 'http://localhost:3000/api/cameras', true);
@@ -185,6 +188,7 @@ request2.onload = function () {
     };
 };
 
+// Envoi des requêtes
 
 request.send();
 request1.send();

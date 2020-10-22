@@ -1,3 +1,5 @@
+// Création de l'objet JSON pour la requête POST
+
 let bodyJson = {
     contact: {
         firstName: "",
@@ -8,6 +10,8 @@ let bodyJson = {
     },
     products: []
 };
+
+// Fonction bootstrap afin de rendre le form dynamique
 
 (function () {
     'use strict';
@@ -24,6 +28,8 @@ let bodyJson = {
         });
     }, false);
 })();
+
+// Appel de la fonction au chargement de la page afin d'afficher les éléments du panier
 
 function displayAllCart() {
     let cartContent = localStorage.getItem('cart');
@@ -107,13 +113,17 @@ function displayAllCart() {
     document.getElementById('totalPrice').innerHTML = totalPrice;
 }
 
+// Fonction appelé lors de la commande
+
 function sendCommand(event) {
-    
+
     bodyJson.contact.firstName = document.getElementById('firstname').value;
     bodyJson.contact.lastName = document.getElementById('name').value;
     bodyJson.contact.address = document.getElementById('address').value;
     bodyJson.contact.city = document.getElementById('city').value;
     bodyJson.contact.email = document.getElementById('email').value;
+
+// Création de la promesse sur l'appel API POST
 
     let makeRequest = () => {
         return new Promise((resolve, reject) => {

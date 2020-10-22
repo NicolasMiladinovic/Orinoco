@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     objectId = urlParams.get('id');
     let type = urlParams.get('type');
     let request = new XMLHttpRequest();
+    // Récupération du produit grace à son URL
     request.open('GET', "http://localhost:3000/api/" + type + "/" + objectId, true);
     request.onload = function () {
         data = JSON.parse(this.response);
@@ -26,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     };
     request.send();
 });
+
+// Mise en page
 
 function displayProduct(data) {
 
@@ -107,7 +110,7 @@ function displayProduct(data) {
     divTextContent.appendChild(newPPrice);
 };
 
-
+// Ajout du produit au panier avec récupération de ses éléments
 
 function displayAddCart(data) {
 
