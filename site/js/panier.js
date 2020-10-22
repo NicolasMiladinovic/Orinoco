@@ -31,9 +31,12 @@ let bodyJson = {
 
 // Appel de la fonction au chargement de la page afin d'afficher les éléments du panier
 
+let cartContent = localStorage.getItem('cart');
+let itemList;
+
 function displayAllCart() {
     let cartContent = localStorage.getItem('cart');
-    let itemList = JSON.parse(cartContent);
+    itemList = JSON.parse(cartContent);
     let removeButton;
     let totalPrice = 0;
     let panier = document.getElementById('produit');
@@ -117,47 +120,53 @@ function displayAllCart() {
 
 function sendCommand(event) {
 
-    bodyJson.contact.firstName = document.getElementById('firstname').value;
-    bodyJson.contact.lastName = document.getElementById('name').value;
-    bodyJson.contact.address = document.getElementById('address').value;
-    bodyJson.contact.city = document.getElementById('city').value;
-    bodyJson.contact.email = document.getElementById('email').value;
+    if (itemList == 0) {
+        alert('Panier vide')
+    } else {
 
-// Création de la promesse sur l'appel API POST
+        bodyJson.contact.firstName = document.getElementById('firstname').value;
+        bodyJson.contact.lastName = document.getElementById('name').value;
+        bodyJson.contact.address = document.getElementById('address').value;
+        bodyJson.contact.city = document.getElementById('city').value;
+        bodyJson.contact.email = document.getElementById('email').value;
 
-    let makeRequest = () => {
-        return new Promise((resolve, reject) => {
-            let xhr = new XMLHttpRequest()
+        // Création de la promesse sur l'appel API POST
 
-            xhr.open('POST', 'http://localhost:3000/api/teddies/order')
+        let makeRequest = () => {
+            return new Promise((resolve, reject) => {
+                let xhr = new XMLHttpRequest()
 
-            xhr.onload = () => {
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    resolve(JSON.parse(xhr.responseText))
-                } else {
+                xhr.open('POST', 'http://localhost:3000/api/teddies/order')
+
+                xhr.onload = () => {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        resolve(JSON.parse(xhr.responseText))
+                    } else {
+                        reject({
+                            status: xhr.status,
+                            statusText: xhr.statusText
+                        })
+                    }
+                }
+                xhr.onerror = () => {
                     reject({
                         status: xhr.status,
                         statusText: xhr.statusText
                     })
                 }
-            }
-            xhr.onerror = () => {
-                reject({
-                    status: xhr.status,
-                    statusText: xhr.statusText
-                })
-            }
 
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify(bodyJson));
-        })
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify(bodyJson));
+            })
+        }
+
+        makeRequest()
+            .then((data) => {
+                localStorage.setItem("orderId", data.orderId);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
-    makeRequest()
-        .then((data) => {
-            localStorage.setItem("orderId", data.orderId);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
 }
