@@ -242,6 +242,13 @@ button {
   font-style: italic;
 }
 
+#successMsg {
+  margin-top: -2px;
+  height: 30px;
+  color: #28a745;
+  font-style: italic;
+}
+
 .row {
   margin: 0%;
 }

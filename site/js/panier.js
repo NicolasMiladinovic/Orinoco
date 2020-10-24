@@ -41,8 +41,12 @@ function displayAllCart() {
     let totalPrice = 0;
     let panier = document.getElementById('produit');
 
+    let formbtn = document.getElementById('formbtn');
+
     if (itemList.length == 0) {
         document.getElementById('produit').innerHTML = 'Panier vide'
+        formbtn.setAttribute('disabled', '');
+
     } else {
         itemList.forEach((item) => {
 
@@ -120,53 +124,49 @@ function displayAllCart() {
 
 function sendCommand(event) {
 
-    if (itemList == 0) {
-        alert('Panier vide')
-    } else {
 
-        bodyJson.contact.firstName = document.getElementById('firstname').value;
-        bodyJson.contact.lastName = document.getElementById('name').value;
-        bodyJson.contact.address = document.getElementById('address').value;
-        bodyJson.contact.city = document.getElementById('city').value;
-        bodyJson.contact.email = document.getElementById('email').value;
+    bodyJson.contact.firstName = document.getElementById('firstname').value;
+    bodyJson.contact.lastName = document.getElementById('name').value;
+    bodyJson.contact.address = document.getElementById('address').value;
+    bodyJson.contact.city = document.getElementById('city').value;
+    bodyJson.contact.email = document.getElementById('email').value;
 
-        // Création de la promesse sur l'appel API POST
+    // Création de la promesse sur l'appel API POST
 
-        let makeRequest = () => {
-            return new Promise((resolve, reject) => {
-                let xhr = new XMLHttpRequest()
+    let makeRequest = () => {
+        return new Promise((resolve, reject) => {
+            let xhr = new XMLHttpRequest()
 
-                xhr.open('POST', 'http://localhost:3000/api/teddies/order')
+            xhr.open('POST', 'http://localhost:3000/api/teddies/order')
 
-                xhr.onload = () => {
-                    if (xhr.status >= 200 && xhr.status < 300) {
-                        resolve(JSON.parse(xhr.responseText))
-                    } else {
-                        reject({
-                            status: xhr.status,
-                            statusText: xhr.statusText
-                        })
-                    }
-                }
-                xhr.onerror = () => {
+            xhr.onload = () => {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    resolve(JSON.parse(xhr.responseText))
+                } else {
                     reject({
                         status: xhr.status,
                         statusText: xhr.statusText
                     })
                 }
+            }
+            xhr.onerror = () => {
+                reject({
+                    status: xhr.status,
+                    statusText: xhr.statusText
+                })
+            }
 
-                xhr.setRequestHeader('Content-Type', 'application/json');
-                xhr.send(JSON.stringify(bodyJson));
-            })
-        }
-
-        makeRequest()
-            .then((data) => {
-                localStorage.setItem("orderId", data.orderId);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(bodyJson));
+        })
     }
 
+    makeRequest()
+        .then((data) => {
+            localStorage.setItem("orderId", data.orderId);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 }
+

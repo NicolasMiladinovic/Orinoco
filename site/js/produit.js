@@ -3,6 +3,8 @@ let data = {};
 const divTextContent = document.createElement('div');
 const button = document.createElement('button');
 button.setAttribute('class', 'btn btn-dark');
+const addcartmsg = document.createElement('div');
+addcartmsg.setAttribute('id','successMsg');
 
 document.addEventListener("DOMContentLoaded", function (event) {
 
@@ -128,9 +130,13 @@ function displayAddCart(data) {
 
     button.addEventListener("click", function (e) {
 
-        if (typeof selectedElement == 'undefined') {
+        if (typeof selectedElement == 'undefined' || selectedElement=='Option') {
             document.getElementById('errorMsg').innerHTML = 'Choisissez une option.'
+            document.getElementById('successMsg').innerHTML = ''
+
         } else {
+            document.getElementById('errorMsg').innerHTML = '';
+            document.getElementById('successMsg').innerHTML = 'Produit ajouté au panier !'
 
             let actualCart = localStorage.getItem("cart");
             let actualCartInJson = [];
@@ -142,6 +148,6 @@ function displayAddCart(data) {
             localStorage.setItem("cart", JSON.stringify(actualCartInJson));
         }
     });
-
-    divTextContent.appendChild(button)
+    divTextContent.appendChild(button);
+    divTextContent.appendChild(addcartmsg);
 }
